@@ -12,4 +12,10 @@ class Login extends MY_Controller{
 			array("activeHeaders"=>"Login")
 		);
 	}
+
+	public function logout(){
+			$this->session->set_userdata('user_isLoggedIn', false);
+			$this->session->unset_userdata('user_currentlyloggedIn', $session_data);
+			header("location:".base_url('login'));
+	}
 }
