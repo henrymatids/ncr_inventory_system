@@ -4,7 +4,7 @@ class MY_Controller extends CI_Controller{
     public function __construct() {
         parent::__construct();
     }
-    
+
     public function loadPages(
       $bodyLink,
       $headerLink,
@@ -15,7 +15,7 @@ class MY_Controller extends CI_Controller{
       $this->load->view($headerLink, $data);
       $this->load->view($bodyLink);
       $this->load->view($footerLink);
-      if($bodyScriptLink){
+      if ($bodyScriptLink) {
        $this->load->view($bodyScriptLink);
       }
     }

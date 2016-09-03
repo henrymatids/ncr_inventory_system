@@ -3,28 +3,23 @@ class Model_login extends CI_model
 {
 	protected $table = 'accounts';
 
+	public function authenticate_user($userName, $password) {
+		$this->db->start_cache();
+        $this->db->flush_cache();
+        $result = false;
 
-	public function insert_user($data)
-	{
-		return $this->db->insert($this->table, $data);
-	}
+        //$condition = "username =" . "'" .$username. "' AND " . "password =" . "'" . md5($password) . "'";
+				$condition = "username =" . "'" .$userName. "' AND " . "password =" . "'" . $password. "'";
 
-	public function retrieve_user($data)
-	{
-		return $this->db->get($this->table)->result_array();
-	}
+        $query = $this->db->select("*")
+            ->from('accounts')
+            ->where($condition)
+            ->limit(1)
+            ->get();
 
-	public function update_user($data)
-	{
-		return $this->db->update($this->table,$data);
-	}
-
-	public function delete_user($data)
-	{
-		return $this->db->delete($this->table, $data);
-	}
-	public function authenticate_user($data){
-		$data['password']=md5($data['password']);
-		return $this->db->get_where($this->table,$data)->result_array();
+        if ($query->num_rows() == 1){
+            $result =  $query->row_array();
+        }
+        return $result;
 	}
 }

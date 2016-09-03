@@ -1,17 +1,28 @@
-
 .Absolute-Center {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  margin: 10% auto;
+  position: auto;
+  top: 0px; left: 0; bottom: 0; right: 0;
 }
 
 .Absolute-Center.is-Responsive {
-  width: 50%; 
-  height: 50%;
   min-width: 200px;
-  max-width: 400px;
+  max-width: 500px;
   padding: 40px;
 }
+
+.loginErrorMessage {
+  font: 12px bold;
+  display: none;
+}
+
+.ncrLogo {
+  display: block;
+  margin: auto;
+  background: url('../images/NCR-Logo.ico') no-repeat center center;
+  height: 100px;
+  width: 300px;
+}
+
 
 #logo-container{
   margin: auto;

@@ -3,18 +3,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Controller_login extends API_controller{
 
-	public function __construct(){
+	public function __construct() {
 		parent::__construct();
-		$this->load->model(['model_login'=>'users']);
+		$this->load->model("model_login");
 	}
 
-	public function index(){
-		$this ->load->view('Login');
+	public function index() {
+		$this->load->view('login');
 	}
 
-	public function LogInAttempt(){
+	public function userLogin() {
+		$this->form_validation->set_rules('userName', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
 
-		$result = $this->input->post();
-		$this->users->authentication_user($result);
+		if ($this->form_validation->run() == FALSE) {
+			$error = array(
+						"userName" => form_error('userName'),
+						"password" => form_error('password')
+					);
+			$this->responseError(2, $error);
+		} else {
+			$result = $this->model_login->authenticate_user($this->input->post("userName"), $this->input->post("password"));
+
+			if ($result) {
+				$this->responseData($result);
+			} else {
+				$error = array("incorrect" => "The username and password combination is incorrect.");
+				$this->responseError(2, $error);
+			}
+		}
+		$this->outputResponse();
 	}
 }

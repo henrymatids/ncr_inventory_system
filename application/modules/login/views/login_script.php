@@ -1,31 +1,33 @@
 <script type="text/javascript">
-$(document).ready(function () {
-    
-    // $('#SubmitBTN').click(function(event){
-    //     event.preventDefault();
-    //     var login_object={
-    //         username: $('[name=username]').val(),
-    //         password: $('[name=password]').val()
-    //     };
-    //     var request = $.post("<?=base_url('api/controller_login/authenticate')?>", login_object);
-    //     request.done(function(response){
-    //    	var data = jQuery.parseJSON(response);
-    //     console.log(data);
-    //     	if(data.data){
-    //     		window.location.href = "<?=base_url('home')?>";
-    //     	}
-    //     	else {
-    //         if(data["error"][0]["message"]["incorrect"]){
-    //           $('span[id=username]').text("");
-    //           $('span[id=password]').text(data["error"][0]["message"]["incorrect"]);
-    //   		  }
-    //       else{
-    //         $('span[id=username]').text(data["error"][0]["message"]["username"]);
-    //         $('span[id=password]').text(data["error"][0]["message"]["password"]);
-    // 	    }
-    //     }
-    //   });
-    // });
+  function loginButton() {
+    var loginObject = {
+        userName: $('[name=username]').val(),
+        password: $('[name=password]').val()
+    };
 
-});
+    var request = $.post("<?= base_url('api/controller_login/userLogin') ?>", loginObject);
+
+    request.done(function(response) {
+     	var result = jQuery.parseJSON(response);
+
+      const accountType = result.data.account_type;
+      const resultError = result.error[0];
+      const resultData = result.data;
+
+      if (resultData) {
+        if (accountType === "Admin") {
+          console.log("account is admin");
+        } else if (accountType === "Staff"){
+          console.log("account is staff");
+        } else {
+          console.log("account is user");
+        }
+        window.location.href = "<?=base_url('dashboard')?>";
+        $('#loginError').hide();
+      } else {
+        $('#loginError').show();
+      }
+      console.log(result);
+    });
+  }
 </script>

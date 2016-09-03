@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_controller{
+class Login extends MY_Controller{
 
 	public function index() {
 		$this->loadPages(
@@ -9,8 +9,7 @@ class Login extends MY_controller{
 			'login/login_header',
 			'login/login_footer',
 			'login/login_script',
-			array("activeHeaders"=>"Login"),
-			'login/login_header'
+			array("activeHeaders"=>"Login")
 		);
 	}
 }
