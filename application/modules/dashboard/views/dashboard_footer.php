@@ -1,7 +1,7 @@
-          </div> <!-- end of row -->
-        </div> <!-- end of col-md-10 -->
-      </div> <!-- end of row -->
-    </div> <!-- end of page-content -->
+          </div> <!-- end of row (sidebar_<type>) -->
+        </div> <!-- end of col-md-10 (sidebar_<type>) -->
+      </div> <!-- end of row (sidebar_<type>) -->
+    </div> <!-- end of page-content (sidebar_<type>) -->
 
     <nav class="navbar navbar-default navbar-fixed-bottom">
       <footer>

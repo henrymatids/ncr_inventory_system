@@ -1,4 +1,5 @@
 <div class="content-box-large col-lg-12">
+  <!-- Student who borrowed panel -->
   <div class="col-lg-3 col-md-6">
       <div class="panel panel-primary">
           <div class="panel-heading">
@@ -21,7 +22,8 @@
           </a>
       </div>
   </div>
-
+  <!-- End of student who borrowed panel -->
+  <!-- Materials borrowed panel -->
   <div class="col-lg-3 col-md-6">
       <div class="panel panel-success">
           <div class="panel-heading">
@@ -44,7 +46,8 @@
           </a>
       </div>
   </div>
-
+  <!-- End of materials borrowed panel -->
+  <!-- Number of Materials panel -->
   <div class="col-lg-3 col-md-6">
       <div class="panel panel-warning">
           <div class="panel-heading">
@@ -67,7 +70,8 @@
           </a>
       </div>
   </div>
-
+  <!-- End of number of Materials panel -->
+  <!-- Comments panel -->
   <div class="col-lg-3 col-md-6">
       <div class="panel panel-danger">
           <div class="panel-heading">
@@ -90,5 +94,5 @@
           </a>
       </div>
   </div>
-
+  <!-- end of comments panel -->
 </div>

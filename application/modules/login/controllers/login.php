@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_Controller{
+class Login extends MY_Controller {
 
 	public function index() {
 		$this->loadPages(
@@ -13,7 +13,7 @@ class Login extends MY_Controller{
 		);
 	}
 
-	public function logout(){
+	public function logout() {
 			$this->session->set_userdata('user_isLoggedIn', false);
 			$this->session->unset_userdata('user_currentlyloggedIn', $session_data);
 			header("location:".base_url('login'));

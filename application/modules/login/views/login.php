@@ -1,8 +1,5 @@
   <div class="Absolute-Center is-Responsive">
     <div class="panel panel-default ">
-      <!-- <div class="panel-header">
-
-      </div> -->
     	<div class="panel-body">
         <div class="ncrLogo"></div>
       	<div name="panelContents" class="col-md-12">
