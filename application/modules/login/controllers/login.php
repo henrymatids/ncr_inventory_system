@@ -9,7 +9,7 @@ class Login extends MY_Controller {
 			'login/login_header',
 			'login/login_footer',
 			'login/login_script',
-			array("activeHeaders"=>"Login")
+			array("activeHeaders"=>"NCR Laboratory")
 		);
 	}
 

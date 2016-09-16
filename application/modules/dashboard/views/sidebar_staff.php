@@ -2,13 +2,13 @@
         <!-- Main menu -->
         <li class="<?= ($activeHeaders == 'Home') ? 'current' : '' ?>">
           <a href="<?= base_url('home') ?>">
-            <i class="glyphicon glyphicon-home"></i>
+            <i class="fa fa-home"></i>
             Dashboard
           </a>
         </li>
-        <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
-        <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-        <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
+        <li><a href="<?=base_url('inventory')?>"><i class="fa fa-list"></i>Inventory</a></li>
+        <li><a href="<?=base_url('borrow_list')?>"><i class="fa fa-edit"></i>Borrowed items</a></li>
+        <li><a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i>Schedules</a></li>
     </ul>
   </div>
 </div>

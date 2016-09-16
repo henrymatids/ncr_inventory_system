@@ -7,7 +7,7 @@
       <footer>
          <div class="container">
             <div class="copy text-center">
-               Copyright 2016 <a href='#'>NCR Inventory System</a>
+               <small>Copyright &copy; 2016. All Rights Reserved | <a href='<?=base_url('dashboard')?>'>NCR Inventory System</a></small>
             </div>
          </div>
       </footer>

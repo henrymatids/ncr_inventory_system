@@ -9,7 +9,7 @@ class Home extends MY_controller {
 			'dashboard/dashboard_header',
 			'dashboard/dashboard_footer',
 			'home/home_script',
-			array("activeHeaders"=>"Home")
+			array("activeHeaders"=>"NCR Laboratory")
 		);
 	}
 }

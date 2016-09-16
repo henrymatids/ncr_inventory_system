@@ -1,5 +1,6 @@
 <script type="text/javascript">
-  function loginButton() {
+
+  var loginButton = function() {
     var loginObject = {
         userName: $('[name=username]').val(),
         password: $('[name=password]').val()
@@ -23,4 +24,12 @@
       console.log(result);
     });
   }
+
+  // When Enter key is pressed
+  $(".onKeyEvent").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#loginBtn").click();
+    }
+  });
+
 </script>

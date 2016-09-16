@@ -5,34 +5,31 @@ class Controller_inventory extends API_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model(['model_inventory'=>'inventory']);
-	}
-
-	public function index() {
-		$data['title'] = "addItems";
-		$this->load->view('templates/header', $data);
-		$this->load->view('addItem');
-		$this->load->view('templates/footer');
+		$this->load->model(['model_inventory' => 'inventory']);
 	}
 
 	public function addItem() {
-		$result = $this->input->post();
-		$this->form_validation->set_rules('item_name', 'Item name', 'required');
-		$this->form_validation->set_rules('quantity', 'Quantity','required');
 
-		if ($result['submit'] == TRUE) {
-			if ($this->form_validation->run() == FALSE) {
-				redirect('Inventory');
-			} else {
-				$data = array(
-						'item_name'=>$result['item_name'],
-						'quantity'=>$result['quantity']
-						);
-				$this->inventory->insert_item($data);
-				redirect('Inventory');
-			}
+		$this->form_validation->set_rules('quantity', 'Quantity', 'required');
+		$this->form_validation->set_rules('item_name', 'Item Name', 'required');
+		$this->form_validation->set_rules('brand_model', 'Brand Model','required');
+		$this->form_validation->set_rules('date_acquired', 'Date Acquired', 'required');
+		$this->form_validation->set_rules('remarks', 'Remarks', 'required');
+
+		if($this->form_validation->run()){
+			$data = array('qty' => $this->input->post('quantity'),
+						  'item_name' => $this->input->post('item_name'),
+						  'brand_model' => $this->input->post('brand_model'),
+						  'date_acquired' => $this->input->post('date_acquired'),
+						  'remarks' => $this->input->post('remarks')
+						  );
+
+			$this->responseData($data);
+			$this->inventory->insert_item($data);
 		} else {
-			redirect('home');
+			$this->responseError(10, $this->form_validation->error_array());
 		}
+		$this->outputResponse();
 	}
+
 }

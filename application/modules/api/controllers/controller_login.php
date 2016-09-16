@@ -35,8 +35,9 @@ class Controller_login extends API_controller {
 
 			if ($result) {
 				$this->responseData($result);
+
 			} else {
-				$error = array("incorrect" => "The username and password combination is incorrect.");
+				$error = array("loginError" => "Incorrect Username or Password.");
 				$this->responseError(2, $error);
 			}
 		}

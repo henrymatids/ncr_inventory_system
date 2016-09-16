@@ -18,7 +18,7 @@
 .ncrLogo {
   display: block;
   margin: auto;
-  background: url('../images/NCR-Logo.ico') no-repeat center center;
+  background: url('../images/NCR.ico') no-repeat center center;
   height: 100px;
   width: 300px;
 }
@@ -28,6 +28,15 @@
   margin: auto;
   margin-bottom: 10px;
   width:200px;
-  height:30px;
-/*  background-image:url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO');*/
+}
+
+.spaceRight{
+  margin-right:15px !important;
+}
+.logo{
+  display: inline;
+  background-color: white;
+}
+.table{
+  margin-top: 30px;
 }

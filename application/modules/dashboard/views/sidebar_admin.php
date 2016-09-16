@@ -2,27 +2,14 @@
         <!-- Main menu -->
         <li class="<?= ($activeHeaders == 'Home') ? 'current' : '' ?>">
           <a href="<?= base_url('home') ?>">
-            <i class="glyphicon glyphicon-home"></i>
+            <i class="fa fa-home"></i>
             Dashboard
           </a>
         </li>
-        <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
-        <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-        <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
-        <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
-        <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
-        <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
-        <li class="submenu">
-           <a href="#">
-              <i class="glyphicon glyphicon-list"></i> Pages
-              <span class="caret pull-right"></span>
-           </a>
-           <!-- Sub menu -->
-           <ul>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="signup.html">Signup</a></li>
-          </ul>
-        </li>
+        <li><a href="<?=base_url('user_management')?>"><i class="fa fa-users"></i>Accounts</a></li>
+        <li><a href="<?=base_url('inventory')?>"><i class="fa fa-list"></i>Inventory</a></li>
+        <li><a href="<?=base_url('borrow_list')?>"><i class="fa fa-edit"></i>Borrowed items</a></li>
+        <li><a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i>Schedules</a></li>
     </ul>
   </div>
 </div>
