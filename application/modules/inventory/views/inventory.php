@@ -4,25 +4,87 @@
     <button type="submit" id="searchBtn" class="btn btn-info">Search</button>
     <div class="table-reponsive table-striped">
       <table class="table">
-        <th>ID</th>
-        <th>Quantity</th>
-        <th>Item Name</th>
-        <th>Brand Model</th>
-        <th>Date Acquired</th>
-        <th>Remarks</th>
-        <th>Action</th>
-        <tr>
-          <td>2</td>
-          <td>25</td>
-          <td>mouse</td>
-          <td>A4Tech</td>
-          <td>2020</td>
-          <td>does not exists</td>
-          <td><button class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</button></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Quantity</th>
+            <th>Item Name</th>
+            <th>Brand Model</th>
+            <th>Date Acquired</th>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryTable"></tbody>
       </table>
+
+      <div class="invCloneTable" style="display: none">
+        <table>
+          <tr class="invToBeClonedTable">
+              <td class="invId"></td>
+              <td class="invQuantity"></td>
+              <td class="invItemName"></td>
+              <td class="invBrandModel"></td>
+              <td class="invDateAc1uired"></td>
+              <td class="invRemarks"></td>
+              <td>
+                  <button type="submit" class="btn btn-primary btn-xs" id="EditInventoryBTN" data-toggle="modal" data-target="#EditInventoryModal">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs" id="DeleteInventoryBTN" data-toggle="modal" data-target="#DeleteModal">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+              </td>
+          </tr>
+        </table>
+      </div>
     </div>
 </div>
+
+<!-- edit modal -->
+<div class="modal fade" id="EditInventoryModal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i> Edit Item</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <label class="col-md-3">ID:</label>
+            <div class="col-md-9"><input type="text" class="form-control input-sm" name="itemID"/></div>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="col-md-3">Quantity:</label>
+            <div class="col-md-9"><input type="text" class="form-control input-sm" name="editItemQuantity"/></div>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="col-md-3">Name:</label>
+            <div class="col-md-9"><input type="text" class="form-control input-sm" name="editItemName"/></div>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="col-md-3">Brand Model:</label>
+            <div class="col-md-9"><input type="text" class="form-control input-sm" name="editItemBrand"/></div>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="col-md-3">Date acquired:</label>
+            <div class="col-md-9"><input type="text" class="form-control input-sm" name="editItemDate"/></div>
+          </div>
+          <div class="col-md-12 form-group">
+            <label class="col-md-3">Remarks:</label>
+            <div class="col-md-9"><input type="text" class="form-control input-sm" name="editItemRemarks"/></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+<!-- /.edit modal-->
+
 
 <!-- Modal -->
 <div class="modal fade " tabindex="-1" role="dialog" id="addItemModal">
@@ -34,7 +96,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><i class="fa fa-plus"></i> Add Item</h4>
       </div>
-      <!-- Modal body -->
+        <!-- Modal body -->
       <form id="modalForm" method="post" action="">
         <div class="modal-body ">
           <div class="form-group">

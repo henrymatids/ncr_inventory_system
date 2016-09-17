@@ -22,7 +22,7 @@ class Model_inventory extends CI_model
 	public function update_item($data, $id)
 	{
 		$this->db->where('id', $id);
-			
+
 		return $this->db->update($this->table,$data);
 	}
 
@@ -31,5 +31,20 @@ class Model_inventory extends CI_model
 		$this->db->where('id', $id);
 
 		return $this->db->delete($this->table);
+	}
+
+	public function retrieve_inventory() {
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
+		$query = $this->db->select("*")
+			->from('inventory')
+			->get();
+
+		if ($query->num_rows() > 0) {
+			$result = $query->result_array();
+			return $result;
+		}
+		return false;
 	}
 }

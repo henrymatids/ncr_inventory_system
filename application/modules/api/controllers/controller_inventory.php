@@ -32,4 +32,9 @@ class Controller_inventory extends API_Controller {
 		$this->outputResponse();
 	}
 
+	public function getInventoryList() {
+		$data = $this->inventory->retrieve_inventory();
+		$this->responseData($data);
+		$this->outputResponse();
+	}
 }
