@@ -11,5 +11,10 @@ class Inventory extends MY_controller {
 			'inventory/inventory_script',
 			array("activeHeaders"=>"NCR Laboratory")
 		);
+
+		/* import modals */
+		$this->load->view('inventory_editModal');
+		$this->load->view('inventory_addModal');
+		$this->load->view('inventory_deleteModal');
 	}
 }

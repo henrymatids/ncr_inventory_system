@@ -17,7 +17,8 @@ class Controller_inventory extends API_Controller {
 		$this->form_validation->set_rules('remarks', 'Remarks', 'required');
 
 		if($this->form_validation->run()){
-			$data = array('qty' => $this->input->post('quantity'),
+			$data = array(
+							'qty' => $this->input->post('quantity'),
 						  'item_name' => $this->input->post('item_name'),
 						  'brand_model' => $this->input->post('brand_model'),
 						  'date_acquired' => $this->input->post('date_acquired'),

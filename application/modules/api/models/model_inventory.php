@@ -38,8 +38,8 @@ class Model_inventory extends CI_model
 		$this->db->flush_cache();
 
 		$query = $this->db->select("*")
-			->from('inventory')
-			->get();
+											->from('inventory')
+											->get();
 
 		if ($query->num_rows() > 0) {
 			$result = $query->result_array();

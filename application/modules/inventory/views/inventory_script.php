@@ -1,36 +1,21 @@
 <script type="text/javascript">
-	$(document).ready(function(){
-		var request = $.post("<?= base_url('api/controller_inventory/getInventoryList') ?>", {} , 'json');
+	$(document).ready(function() {
+  /****
+  * LOAD TABLE
+  ****/
+		populateInventoryTable();
 
-    request.done(function(response) {
-			$('#inventoryTable').empty();
-     	var result = jQuery.parseJSON(response);
 
-			if (!result['error'].length) {
-				for (var x = 0; x < result.data.length; x++ ) {
-					var invCloneTable = $(".invCloneTable").find('.invToBeClonedTable').clone();
-					var resultData = result.data[x];
-
-					invCloneTable.attr('id', resultData.id);
-					invCloneTable.find('.invId').text(resultData.id);
-					invCloneTable.find('.invQuantity').text(resultData.qty);
-					invCloneTable.find('.invItemName').text(resultData.item_name);
-					invCloneTable.find('.invBrandModel').text(resultData.brand_model);
-					invCloneTable.find('.invDateAc1uired').text(resultData.date_acquired);
-					invCloneTable.find('.invRemarks').text(resultData.remarks);
-					invCloneTable.removeClass('invToBeClonedTable');
-
-					$("#inventoryTable").append(invCloneTable);
-				}
-			}
-		});
-
-		$('#EditInventoryModal').on('show.bs.modal', function(response){
+  /****
+  * EDIT MODAL
+  ****/
+    /* POPULATE EDIT MODAL */
+		$('#EditInventoryModal').on('show.bs.modal', function(response) {
 	    var source = $(response.relatedTarget);
 	    currentRow = source.closest('tr');
 	    responseID = currentRow.attr('id');
 
-			$("#"+responseID).each(function(){
+			$("#"+responseID).each(function() {
 				var invId = $(this).find(".invId").text();
 				var invQuantity = $(this).find(".invQuantity").text();
 				var invItemName = $(this).find(".invItemName").text();
@@ -47,10 +32,37 @@
 			});
 		});
 
+
+  /****
+  * DELETE MODAL
+  ****/
+    /* GET ID */
+    $("#DeleteModal").on('show.bs.modal', function(response) {
+      var source = $(response.relatedTarget);
+      currentRow = source.closest('tr');
+      responseID = currentRow.attr('id');
+
+      $("#"+responseID).each(function() {
+        $("[name=deleteModalID]").attr("id",responseID);
+      });
+    });
+
+    /* DELETE SELECTED ITEM */
+    $("#deleteYes").on('click', function() {
+			var id = $("[name=deleteModalID]").attr("id");
+      console.log("to be deleted:", id);
+    });
+
+
+  /****
+  * ADD MODAL
+  ****/
+    /* RELOAD TABLE ON ADD MODAL CLOSE */
 		$('#addItemModal').on('hidden.bs.modal', function () {
-		  $("#inventoryTable").ajax.reload();
+			populateInventoryTable();
 		})
 
+    /* ADD MODAL VALIDATION */
 		$('#addItemBtn').click(function(){
 			$('#modalForm').attr('action','<?=base_url('api/controller_inventory/addItem')?>');
 			$('#modalForm').clearForm();
@@ -79,7 +91,7 @@
 			success : function(data){
 				var result = JSON.parse(data);
 				console.log(result);
-				if(!result['error'].length){
+				if(!result['error'].length) {
 					$('#quantity').val('');
 					$('#item_name').val('');
 					$('#brand_model').val('');
@@ -93,5 +105,35 @@
 			}
 		});
 	});
+
+	/****
+	* POPULATE TABLE
+	****/
+	function populateInventoryTable() {
+		var request = $.post("<?= base_url('api/controller_inventory/getInventoryList') ?>", {} , 'json');
+
+		request.done(function(response) {
+			$('#inventoryTable').empty();
+			var result = jQuery.parseJSON(response);
+
+			if (!result['error'].length) {
+				for (var x = 0; x < result.data.length; x++ ) {
+					var invCloneTable = $(".invCloneTable").find('.invToBeClonedTable').clone();
+					var resultData = result.data[x];
+
+					invCloneTable.attr('id', resultData.id);
+					invCloneTable.find('.invId').text(resultData.id);
+					invCloneTable.find('.invQuantity').text(resultData.qty);
+					invCloneTable.find('.invItemName').text(resultData.item_name);
+					invCloneTable.find('.invBrandModel').text(resultData.brand_model);
+					invCloneTable.find('.invDateAc1uired').text(resultData.date_acquired);
+					invCloneTable.find('.invRemarks').text(resultData.remarks);
+					invCloneTable.removeClass('invToBeClonedTable');
+
+				 $("#inventoryTable").append(invCloneTable);
+				}
+			}
+		});
+	}
 
 </script>

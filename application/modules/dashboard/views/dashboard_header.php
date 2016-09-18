@@ -14,8 +14,10 @@
   	<!-- Font Awesome -->
   	<?=plugin_css('font_awesome/css/font-awesome.min.css');?>
   	<!-- Custom made css -->
+    <?=css('modalHeader.css');?>
   	<?=css('dashboard.css');?>
     <?=css('custom.css');?>
+    <?=css('inventory.css');?>
     <!-- Javascript -->
     <?=script('jquery.min.js')?>
     <?=script('jquery.form.min.js');?>

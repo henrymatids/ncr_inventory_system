@@ -1,0 +1,16 @@
+.inventoryCloneTable {
+  display: none;
+}
+
+.inventoryFloatLeft {
+  float: left;
+}
+
+.inventoryFloatRight {
+  float: right;
+}
+
+.inventorySearch {
+  float: left;
+  padding-right: 10px;
+}
