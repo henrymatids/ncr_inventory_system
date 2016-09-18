@@ -1,15 +1,15 @@
 <div class="content-box-large col-lg-12">
     <div class="col-lg-12">
-      <div class="inventoryFloatLeft">
+      <div class="tableFloatLeft">
         <button type="button" id="addItemBtn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addItemModal">
           <i class="fa fa-plus"></i> Add Item
         </button>
       </div>
-      <div class="inventoryFloatRight">
-        <div class="inventorySearch">
+      <div class="tableFloatRight">
+        <div class="tableSearch">
           <input type="text" class="form-control input-sm" name="searchBar">
         </div>
-        <div class="inventoryFloatRight">
+        <div class="tableFloatRight">
           <button type="submit" id="searchBtn" class="btn btn-info btn-sm">Search</button>
         </div>
       </div>
@@ -32,7 +32,7 @@
         <tbody id="inventoryTable"></tbody>
       </table>
 
-      <div class="invCloneTable inventoryCloneTable">
+      <div class="invCloneTable tableCloneTable">
         <table>
           <tr class="invToBeClonedTable">
               <td class="invId"></td>

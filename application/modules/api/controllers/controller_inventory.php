@@ -32,7 +32,26 @@ class Controller_inventory extends API_Controller {
 		}
 		$this->outputResponse();
 	}
-
+	public function updateItem(){
+		$data = array(
+						'qty' => $this->input->post('editItemQuantity'),
+						'item_name' => $this->input->post('editItemName'),
+						'brand_model' => $this->input->post('editItemBrand'),
+						'date_acquired' => $this->input->post('editItemDate'),
+						'remarks' => $this->input->post('editItemRemarks')
+						);
+		$this->responseData($data);
+		$this->inventory->update_item($data,$this->input->post('itemID'));
+		$this->outputResponse();
+	}
+	public function deleteItem(){
+		if($this->input->post('itemId')){
+			$this->inventory->delete_item($this->input->post('itemId'));
+		} else {
+			$this->responseError(33, 'Delete Failed');
+		}
+		$this->outputResponse();
+	}
 	public function getInventoryList() {
 		$data = $this->inventory->retrieve_inventory();
 		$this->responseData($data);

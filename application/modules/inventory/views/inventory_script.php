@@ -32,6 +32,19 @@
 			});
 		});
 
+		$('#EditInventoryModal').on('show.bs.modal',function(){
+			$('#editItemModalForm').attr('action','<?=base_url('api/controller_inventory/updateItem')?>');
+		});
+
+		$('#EditInventoryModal').ajaxForm({
+				beforeSubmit : function(data){
+					console.log('before submit');
+				},
+				success : function(data){
+					console.log('success');
+					$('#EditInventoryModal').modal('hide');
+				}
+			});
 
   /****
   * DELETE MODAL
@@ -49,8 +62,21 @@
 
     /* DELETE SELECTED ITEM */
     $("#deleteYes").on('click', function() {
-			var id = $("[name=deleteModalID]").attr("id");
-      console.log("to be deleted:", id);
+		var id = {
+				itemId : $("[name=deleteModalID]").attr("id")
+			};
+		var request = $.post("<?= base_url('api/controller_inventory/deleteItem') ?>", id, 'json');
+
+    	request.done(function(response) {
+    		var result = jQuery.parseJSON(response);
+
+    		if(result['error'].length){
+    			console.log(result['error']);
+    		} else {
+    			$('#DeleteModal').modal('hide');
+    			window.location.reload();
+    		}
+    	});
     });
 
 
@@ -65,10 +91,10 @@
     /* ADD MODAL VALIDATION */
 		$('#addItemBtn').click(function(){
 			$('#modalForm').attr('action','<?=base_url('api/controller_inventory/addItem')?>');
-			$('#modalForm').clearForm();
+			validator.resetForm();
 		});
 
-		$('#modalForm').validate({
+		var validator = $('#modalForm').validate({
 			rules : {
 				quantity : 'required',
 				item_name : 'required',

@@ -52,6 +52,14 @@ class Controller_account extends API_Controller {
 		$this->outputResponse();
 	}
 
+	public function getAccountList(){
+		$data = $this->account->retrieveAllAccount();
+		$this->responseData($data);
+		$this->outputResponse();
+	}
+
+	public function deleteAccount(){
+	}
 	public function username_is_unique($str){
 		echo "<script>console.log('qweqweqweq')</script>";
 		$result = $this->account->retrieveAccount($str);

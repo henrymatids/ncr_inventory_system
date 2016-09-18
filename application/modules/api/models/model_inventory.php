@@ -6,11 +6,17 @@ class Model_inventory extends CI_model
 
 	public function insert_item($data)
 	{
+		$this->db->start_cache();
+		$this->db->flush_cache();
+		
 		return $this->db->insert($this->table, $data);
 	}
 
 	public function retrieve_item($item_name = FALSE, $item_description = FALSE)
 	{
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
 		if($item_name)
 			$this->db->where('item_name', $item_name);
 		if($item_description)
@@ -21,6 +27,9 @@ class Model_inventory extends CI_model
 
 	public function update_item($data, $id)
 	{
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
 		$this->db->where('id', $id);
 
 		return $this->db->update($this->table,$data);
@@ -28,6 +37,9 @@ class Model_inventory extends CI_model
 
 	public function delete_item($id)
 	{
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
 		$this->db->where('id', $id);
 
 		return $this->db->delete($this->table);
@@ -38,7 +50,7 @@ class Model_inventory extends CI_model
 		$this->db->flush_cache();
 
 		$query = $this->db->select("*")
-											->from('inventory')
+											->from($this->table)
 											->get();
 
 		if ($query->num_rows() > 0) {

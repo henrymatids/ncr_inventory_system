@@ -11,5 +11,10 @@ class User_management extends MY_controller {
 			'user_management/user_management_script',
 			array("activeHeaders"=>"NCR Laboratory")
 		);
+
+		/* Import Modals */
+		$this->load->view('user_management_addModal');
+		$this->load->view('user_management_deleteModal');
+		$this->load->view('user_management_editModal');
 	}
 }
