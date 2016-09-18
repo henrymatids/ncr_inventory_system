@@ -24,8 +24,9 @@
             <th>Username</th>
             <th>ID Number</th>
             <th>Firstname</th>
-            <th>Middlename/th>
+            <th>Middlename</th>
             <th>Lastname</th>
+            <th>Type</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -41,6 +42,7 @@
               <td class="accountFirstname"></td>
               <td class="accountMiddlename"></td>
               <td class="accountLastname"></td>
+              <td class="accountType"></td>
               <td>
                   <button type="submit" class="btn btn-primary btn-xs" id="EditAccountBTN" data-toggle="modal" data-target="#EditAccountModal">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

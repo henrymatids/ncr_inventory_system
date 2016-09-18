@@ -13,9 +13,9 @@
 			*POPULATE EDIT MODAL
 			********/
 				$('#EditAccountModal').on('show.bs.modal', function(response) {
-		    var source = $(response.relatedTarget);
-		    currentRow = source.closest('tr');
-		    responseID = currentRow.attr('id');
+				    var source = $(response.relatedTarget);
+				    currentRow = source.closest('tr');
+				    responseID = currentRow.attr('id');
 
 					$("#"+responseID).each(function() {
 						var accountId = $(this).find(".accountId").text();
@@ -24,6 +24,7 @@
 						var accountFirstname = $(this).find(".accountFirstname").text();
 						var accountMiddlename = $(this).find(".accountMiddlename").text();
 						var accountLastname = $(this).find(".accountLastname").text();
+						var accountType = $(this).find('.accountType').text();
 
 						$("[name=accountID]").val(accountId);
 						$("[name=editUserUsername]").val(accountUsername);
@@ -151,19 +152,21 @@
 		request.done(function(response){
 			$('#userManagementTable').empty();
 			var result = jQuery.parseJSON(response);
+			console.log(result);
 
 			if(!result['error'].length){
 				for(var x = 0; x < result.data.length; x++){
-					var accountCloneTable = $('#accountCloneTable').find('.accountToBeClonedTable');
+					var accountCloneTable = $('.accountCloneTable').find('.accountToBeClonedTable').clone();
 					var resultData = result.data[x];
 
-					accountCloneTable. attr('id', resultData.id);
-					accountCloneTable.find('.accountId').text(resultData.id);
-					accountCloneTable.find('.accountUsername').text(resultData.qty);
-					accountCloneTable.find('.accountIdNumber').text(resultData.item_name);
-					accountCloneTable.find('.accountFirstname').text(resultData.brand_model);
-					accountCloneTable.find('.accountMiddlename').text(resultData.date_acquired);
-					accountCloneTable.find('.accountLastname').text(resultData.remarks);
+					accountCloneTable.attr('id', resultData.user_id);
+					accountCloneTable.find('.accountId').text(resultData.user_id);
+					accountCloneTable.find('.accountUsername').text(resultData.username);
+					accountCloneTable.find('.accountIdNumber').text(resultData.id_number);
+					accountCloneTable.find('.accountFirstname').text(resultData.firstname);
+					accountCloneTable.find('.accountMiddlename').text(resultData.middlename);
+					accountCloneTable.find('.accountLastname').text(resultData.lastname);
+					accountCloneTable.find('.accountType').text(resultData.account_type);
 					accountCloneTable.removeClass('accountToBeClonedTable');
 
 				 $("#userManagementTable").append(accountCloneTable);

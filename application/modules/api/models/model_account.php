@@ -44,7 +44,7 @@ class Model_account extends CI_model
 
 		$query = $this->db->select("*")
 										->from($this->table)
-										->join('account_information','acccount_information.fk_id = account.user_id')
+										->join('account_information','account_information.fk_id = account.user_id')
 										->get();
 		if($query->num_rows() > 0){
 			$result = $query->result_array();

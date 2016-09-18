@@ -16,11 +16,11 @@
               </div>
               <div class="col-md-12 form-group">
                 <label class="col-md-3">Username:</label>
-                <div class="col-md-9"><input type="number" class="form-control input-sm" name="editUserUsername"/></div>
+                <div class="col-md-9"><input type="text" class="form-control input-sm" name="editUserUsername"/></div>
               </div>
               <div class="col-md-12 form-group">
                 <label class="col-md-3">ID Number:</label>
-                <div class="col-md-9"><input type="text" class="form-control input-sm" name="editUserIdNumber"/></div>
+                <div class="col-md-9"><input type="number" class="form-control input-sm" name="editUserIdNumber"/></div>
               </div>
               <div class="col-md-12 form-group">
                 <label class="col-md-3">Firstname:</label>
