@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2016 at 05:24 PM
+-- Generation Time: Sep 20, 2016 at 08:52 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -38,12 +38,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`user_id`, `username`, `password`, `account_type`) VALUES
-(1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 'Admin'),
-(2, 'henry', 'ce2e736f5f17375c439cc0c19ac32cea', 'Student'),
-(3, 'ncrstaff', 'e10adc3949ba59abbe56e057f20f883e', 'Staff'),
-(4, 'testcase1', 'e10adc3949ba59abbe56e057f20f883e', 'Student'),
-(5, 'kulafu', 'e10adc3949ba59abbe56e057f20f883e', 'Student'),
-(6, 'henrych', 'e10adc3949ba59abbe56e057f20f883e', 'Admin');
+(11, 'henrych', 'ce2e736f5f17375c439cc0c19ac32cea', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -64,10 +59,7 @@ CREATE TABLE `account_information` (
 --
 
 INSERT INTO `account_information` (`fk_id`, `id_number`, `firstname`, `middlename`, `lastname`) VALUES
-(3, 123456, 'ncr', 'staff', 'staff'),
-(4, 11105191, 'test', 'case', 'one'),
-(5, 11105191, 'alfe', 'saguin', 'lana'),
-(6, 11105191, 'henry', 'senerpida', 'matidios');
+(11, 11105191, 'Henry', 'Senerpida', 'Matidios');
 
 -- --------------------------------------------------------
 
@@ -89,8 +81,7 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`id`, `qty`, `item_name`, `brand_model`, `date_acquired`, `remarks`) VALUES
-(1, 11, 'keyboard', 'Dell PS/2', 2009, 'due for TDA(TNS)'),
-(2, 20, 'mouse', 'A4Tech', 2020, 'does not exists');
+(6, 21, 'mouse', 'Razer', 2016, 'Gaming Mouse');
 
 --
 -- Indexes for dumped tables
@@ -122,12 +113,12 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
@@ -136,7 +127,7 @@ ALTER TABLE `inventory`
 -- Constraints for table `account_information`
 --
 ALTER TABLE `account_information`
-  ADD CONSTRAINT `account_information_ibfk_1` FOREIGN KEY (`fk_id`) REFERENCES `account` (`user_id`);
+  ADD CONSTRAINT `account_information_ibfk_1` FOREIGN KEY (`fk_id`) REFERENCES `account` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
