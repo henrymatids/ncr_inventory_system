@@ -19,7 +19,7 @@ class Controller_account extends API_Controller {
 		$this->form_validation->set_rules('lastname', 'Lastname', 'required');
 		$this->form_validation->set_rules('account_type', 'Account Type', 'required');
 
-		if($this->form_validation->run()){
+		if ($this->form_validation->run()) {
 			$rawData = array('username' => $this->input->post('username'),
 							 'password' => $this->input->post('password'),
 							 'id_number' => $this->input->post('id_number'),
@@ -35,7 +35,7 @@ class Controller_account extends API_Controller {
 														  'password' => $this->input->post('password'),
 														  'account_type' => $this->input->post('account_type')
 														  ));
-			if($result){
+			if ($result) {
 				$data = array('fk_id' =>  $result,
 							  'id_number' => $this->input->post('id_number'),
 							  'firstname' => $this->input->post('firstname'),
@@ -52,15 +52,41 @@ class Controller_account extends API_Controller {
 		$this->outputResponse();
 	}
 
-	public function getAccountList(){
+	public function deleteAccount() {
+		$result = $this->account->deleteAccount($this->input->post('accountId'));
+
+		if ($result) {
+			$this->responseData($result);
+		} else {
+			$this->responseError(33, 'Delete Failed');
+		}
+		$this->outputResponse();
+	}
+	public function updateAccount() {
+		$data = array(
+					   'username' 	=> $this->input->post('editUserUsername'),
+					   'account_type'=> $this->input->post('editUserAccountType')
+					   );
+		$data2 = array(
+					   'id_number' 	=> $this->input->post('editUserIdNumber'),
+					   'firstname'	=> $this->input->post('editUserFirstname'),
+					   'middlename'	=> $this->input->post('editUserMiddlename'),
+					   'lastname'	=> $this->input->post('editUserLastname')
+					   );
+
+		$this->account->updateAccount($data, $this->input->post('accountID'));
+		$this->account_information->updateAccountInformation($data2, $this->input->post('accountID'));
+		
+		$this->responseData($data);
+		$this->outputResponse();
+	}
+	public function getAccountList() {
 		$data = $this->account->retrieveAllAccount();
 		$this->responseData($data);
 		$this->outputResponse();
 	}
 
-	public function deleteAccount(){
-	}
-	public function username_is_unique($str){
+	public function username_is_unique($str) {
 		echo "<script>console.log('qweqweqweq')</script>";
 		$result = $this->account->retrieveAccount($str);
 		echo "<script>console.log(".$result.");</script>";

@@ -38,8 +38,8 @@
           </select>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-defWault" data-dismiss="modal">Cancel</button>
-          <button type="submit" id="createBtn" class="btn btn-success">Create</button>
+          <button type="submit" id="createBtn" class="btn btn-success btn-sm">Create</button>
+          <button type="button" class="btn btn-defWault btn-sm" data-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div><!-- /.modal-content -->

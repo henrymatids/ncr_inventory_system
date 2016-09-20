@@ -22,10 +22,11 @@ class Model_account extends CI_model
 		return $this->db->get($this->table)->result_array();
 	}
 
-	public function updateAccount($data){
+	public function updateAccount($data, $id){
 		$this->db->start_cache();
 		$this->db->flush_cache();
 
+		$this->db->where('user_id', $id);
 		return $this->db->update($this->table,$data);
 	}
 
@@ -33,9 +34,9 @@ class Model_account extends CI_model
 		$this->db->start_cache();
 		$this->db->flush_cache();
 
-		$this->db->where('id', $id);
+		$this->db->where("account.user_id", $id);
 		
-		return $this->db->delete($this->table, $data);
+		return $this->db->delete($this->table);
 	}
 
 	public function retrieveAllAccount(){

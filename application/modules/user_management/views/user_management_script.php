@@ -34,6 +34,21 @@
 						$("[name=editUserLastname]").val(accountLastname);
 					});
 				});
+
+				$('#EditAccountModal').on('show.bs.modal',function(){
+					$('#editAccountModalForm').attr('action','<?=base_url('api/controller_account/updateAccount')?>');
+				});
+
+				$('#EditAccountModal').ajaxForm({
+					beforeSubmit : function(data){
+						console.log('before submit');
+					},
+					success : function(data){
+						console.log('success');
+						$('#EditAccountModal').modal('hide');
+						populateAccountTable();
+					}
+				});
 		/****
 	  * DELETE MODAL
 	  ****/
@@ -51,9 +66,9 @@
 	    /* DELETE SELECTED ITEM */
 		    $("#deleteYes").on('click', function() {
 				var id = {
-						itemId : $("[name=deleteModalID]").attr("id")
+						accountId : $("[name=deleteModalID]").attr("id")
 					};
-				var request = $.post("<?= base_url('api/controller_inventory/deleteAccount') ?>", id, 'json');
+				var request = $.post("<?= base_url('api/controller_account/deleteAccount') ?>", id, 'json');
 
 		    	request.done(function(response) {
 		    		var result = jQuery.parseJSON(response);
@@ -62,7 +77,7 @@
 		    			console.log(result['error']);
 		    		} else {
 		    			$('#DeleteModal').modal('hide');
-		    			window.location.reload();
+		    			populateAccountTable();
 		    		}
 		    	});
 		    });
@@ -71,7 +86,7 @@
 			*********/
 				/*RELOAD TABLE ON ADD MODAL CLOSE*/
 				$('#addAccountModal').on('hidden.bs.modal', function () {
-					populateInventoryTable();
+					populateAccountTable();
 				});
 
 				$('#addAccountBtn').click(function(){

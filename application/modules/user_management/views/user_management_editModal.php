@@ -7,7 +7,7 @@
         </button>
         <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i> Edit Account</h4>
       </div>
-      <form onsubmit="window.location.reload()" method="post" action="" id="editUserModalForm">
+      <form method="post" action="" id="editAccountModalForm">
         <div class="modal-body">
           <div class="row">
               <div class="col-md-12 form-group">
@@ -33,6 +33,16 @@
               <div class="col-md-12 form-group">
                 <label class="col-md-3">Lastname:</label>
                 <div class="col-md-9"><input type="text" class="form-control input-sm" name="editUserLastname"/></div>
+              </div>
+              <div class="col-md-12 form-group">
+                <label class="col-md-3">Account Type:</label>
+                <div class="col-md-9">
+                  <select class="btn btn-default" name="editUserAccountType">
+                    <option id="admin">Admin</option>
+                    <option id="staff">Staff</option>
+                    <option id="student">Student</option>
+                  </select>
+                </div>
               </div>
           </div>
         </div>

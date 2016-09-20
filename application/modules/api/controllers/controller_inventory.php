@@ -45,8 +45,10 @@ class Controller_inventory extends API_Controller {
 		$this->outputResponse();
 	}
 	public function deleteItem(){
-		if($this->input->post('itemId')){
-			$this->inventory->delete_item($this->input->post('itemId'));
+		$result = $this->inventory->delete_item($this->input->post('itemId'));
+		
+		if ($result) {
+			$this->responseData($result);
 		} else {
 			$this->responseError(33, 'Delete Failed');
 		}

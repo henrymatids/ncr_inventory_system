@@ -8,10 +8,6 @@ class Controller_login extends API_controller {
 		$this->load->model("model_login");
 	}
 
-	public function index() {
-		$this->load->view('login');
-	}
-
 	public function userLogin() {
 		$this->form_validation->set_rules('userName', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
