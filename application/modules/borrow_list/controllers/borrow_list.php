@@ -11,5 +11,9 @@ class Borrow_list extends MY_controller {
 			'borrow_list/borrow_list_script',
 			array("activeHeaders"=>"NCR Laboratory")
 		);
+
+		/* LOAD MODAL */
+
+		$this->load->view('borrow_list_borrowModal');
 	}
 }

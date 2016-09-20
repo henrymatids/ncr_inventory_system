@@ -39,7 +39,7 @@
               <td class="invQuantity"></td>
               <td class="invItemName"></td>
               <td class="invBrandModel"></td>
-              <td class="invDateAc1uired"></td>
+              <td class="invDateAcquired"></td>
               <td class="invRemarks"></td>
               <td>
                   <button type="submit" class="btn btn-primary btn-xs" id="EditInventoryBTN" data-toggle="modal" data-target="#EditInventoryModal">

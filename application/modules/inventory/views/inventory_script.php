@@ -20,14 +20,14 @@
 				var invQuantity = $(this).find(".invQuantity").text();
 				var invItemName = $(this).find(".invItemName").text();
 				var invBrandModel = $(this).find(".invBrandModel").text();
-				var invDateAc1uired = $(this).find(".invDateAc1uired").text();
+				var invDateAcquired = $(this).find(".invDateAcquired").text();
 				var invRemarks = $(this).find(".invRemarks").text();
 
 				$("[name=itemID]").val(invId);
 				$("[name=editItemQuantity]").val(invQuantity);
 				$("[name=editItemName]").val(invItemName);
 				$("[name=editItemBrand]").val(invBrandModel);
-				$("[name=editItemDate]").val(invDateAc1uired);
+				$("[name=editItemDate]").val(invDateAcquired);
 				$("[name=editItemRemarks]").val(invRemarks);
 			});
 		});
@@ -43,6 +43,7 @@
 				success : function(data){
 					console.log('success');
 					$('#EditInventoryModal').modal('hide');
+					populateInventoryTable();
 				}
 			});
 
@@ -74,7 +75,7 @@
     			console.log(result['error']);
     		} else {
     			$('#DeleteModal').modal('hide');
-    			window.location.reload();
+    			populateInventoryTable();
     		}
     	});
     });
@@ -152,7 +153,7 @@
 					invCloneTable.find('.invQuantity').text(resultData.qty);
 					invCloneTable.find('.invItemName').text(resultData.item_name);
 					invCloneTable.find('.invBrandModel').text(resultData.brand_model);
-					invCloneTable.find('.invDateAc1uired').text(resultData.date_acquired);
+					invCloneTable.find('.invDateAcquired').text(resultData.date_acquired);
 					invCloneTable.find('.invRemarks').text(resultData.remarks);
 					invCloneTable.removeClass('invToBeClonedTable');
 

@@ -15,7 +15,9 @@ class Login extends MY_Controller {
 				array("activeHeaders"=>"NCR Laboratory")
 			);		
 		}
-		// var_dump($this->session->userdata());
+		// $result = $this->session->userdata('user_currentlyloggedIn');
+
+		// var_dump($result['username']);
 	}
 
 	public function logout() {

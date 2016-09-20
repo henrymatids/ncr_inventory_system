@@ -80,12 +80,23 @@ class Controller_account extends API_Controller {
 		$this->responseData($data);
 		$this->outputResponse();
 	}
+
 	public function getAccountList() {
 		$data = $this->account->retrieveAllAccount();
 		$this->responseData($data);
 		$this->outputResponse();
 	}
 
+	public function getLoggedInAccountIdNumber() {
+		$result = $this->session->userdata('user_currentlyloggedIn');
+
+		$account = $this->account->retrieveAccountId($result['username']);
+		$account_info = $this->account_information->retrieveAccount($account[0]['user_id']);
+		// var_dump($account[0]['user_id']);
+		$this->responseData($account_info);
+
+		$this->outputResponse();
+	}
 	public function username_is_unique($str) {
 		echo "<script>console.log('qweqweqweq')</script>";
 		$result = $this->account->retrieveAccount($str);

@@ -18,4 +18,13 @@ class Model_account_information extends CI_model{
 		$this->db->where('fk_id', $id);
 		return $this->db->update($this->table, $data);
 	}
+
+	public function retrieveAccount($id) {
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
+		$this->db->where('fk_id', $id);
+
+		return $this->db->get($this->table)->result_array();
+	}
 }

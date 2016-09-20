@@ -23,6 +23,9 @@
     <?=script('jquery.form.min.js');?>
     <?=script('jquery.validate.min.js')?>
     <?=plugin_script('bootstrap/js/bootstrap.min.js');?>
+    <!-- Datepicker bootstrap -->
+    <?=plugin_css('datepicker/css/datepicker.css')?>
+    <?=plugin_script('datepicker/js/bootstrap-datepicker.js')?>
     <!-- Full Calendar plugin -->
     <?=plugin_css('fullcalendar/fullcalendar.css');?>
     <?=plugin_script('fullcalendar/lib/moment.min.js');?>

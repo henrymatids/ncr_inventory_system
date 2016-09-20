@@ -22,6 +22,14 @@ class Model_account extends CI_model
 		return $this->db->get($this->table)->result_array();
 	}
 
+	public function retrieveAccountId($username) {
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
+		$this->db->where('username', $username);
+
+		return $this->db->get($this->table)->result_array();
+	}
 	public function updateAccount($data, $id){
 		$this->db->start_cache();
 		$this->db->flush_cache();
