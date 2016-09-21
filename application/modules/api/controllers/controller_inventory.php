@@ -61,6 +61,8 @@ class Controller_inventory extends API_Controller {
 	}
 
 	public function getAllAvailableItems() {
-		
+		$data = $this->inventory->retrieve_inventory(1);
+		$this->responseData($data);
+		$this->outputResponse();
 	}
 }

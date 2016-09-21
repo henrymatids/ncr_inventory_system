@@ -40,9 +40,9 @@
 
 	});
 
-
+	/*	POPULATE TABLE 	*/
 	function populateBorrowTable() {
-		var request = $.post("<?= base_url('api/controller_inventory/getInventoryList') ?>", {} , 'json');
+		var request = $.post("<?= base_url('api/controller_inventory/getAllAvailableItems') ?>", {} , 'json');
 
 		request.done(function(response) {
 			$('#borrowTable').empty();
