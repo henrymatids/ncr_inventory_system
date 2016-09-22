@@ -3,11 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
-
-
-
--- Generation Time: Sep 22, 2016 at 07:51 PM
-
+-- Generation Time: Sep 20, 2016 at 08:52 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -76,7 +72,7 @@ CREATE TABLE `inventory` (
   `qty` int(11) NOT NULL,
   `item_name` varchar(50) NOT NULL,
   `brand_model` varchar(30) NOT NULL,
-  `date_acquired` date NOT NULL,
+  `date_acquired` int(11) NOT NULL,
   `remarks` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -85,10 +81,7 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`id`, `qty`, `item_name`, `brand_model`, `date_acquired`, `remarks`) VALUES
-(6, 25, 'mouse', 'Razer', '2016-09-21', 'Gaming Mouse'),
-(8, 0, 'keyboard', 'Razer', '2016-09-30', 'Gaming Keyboard'),
-(9, 30, 'mouse', 'A4Tech', '2016-09-23', 'Working'),
-(10, 86, 'moose', 'TESTING', '2016-09-23', 'Testing');
+(6, 21, 'mouse', 'Razer', 2016, 'Gaming Mouse');
 
 --
 -- Indexes for dumped tables
@@ -120,12 +113,12 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
