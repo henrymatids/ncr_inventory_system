@@ -24,7 +24,7 @@
 				var borrowBrandModel = $(this).find(".borrowBrandModel").text();
 
 				$("[name=borrowID]").val(borrowId);
-				$("[name=borrowItemQuantity]").val(borrowQuantity);
+				$("[name=borrowItemQuantity]").val(1);
 				$("[name=borrowItemName]").val(borrowItemName);
 				$("[name=borrowItemBrand]").val(borrowBrandModel);
 			});
@@ -35,8 +35,8 @@
 					 autoclose : true,
 					 todayHighlight : true,
 					 toggleActive : true
-				});
-		})
+				}).datepicker("setDate", new Date());
+		});
 
 	});
 

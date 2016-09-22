@@ -5,6 +5,13 @@
   ****/
 		populateInventoryTable();
 
+  /****
+  *	SEARCH BAR
+  ****/
+		$('[name=searchBar').on('input', function(e){
+			var searchBarValue = $(this).val();
+			populateInventoryTable(searchBarValue);
+		});
 
   /****
   * EDIT MODAL
@@ -131,18 +138,33 @@
 				$('#addItemModal').modal('hide');
 			}
 		});
+		$('#addItemModal, #EditInventoryModal').on('show.bs.modal', function(){
+				$("[name=date_acquired], [name=editItemDate]").datepicker({
+					 autoclose : true,
+					 todayHighlight : true,
+					 toggleActive : true,
+					 format : "yyyy/mm/dd"
+				}).datepicker("setDate", new Date());
+		});
 	});
 
 	/****
 	* POPULATE TABLE
 	****/
-	function populateInventoryTable() {
-		var request = $.post("<?= base_url('api/controller_inventory/getInventoryList') ?>", {} , 'json');
+	function populateInventoryTable(itemName = false) {
+		if (itemName) {
+			var itemObject = {
+				item_name : itemName
+			};
+		} else {
+			var itemObject = {};
+		}
+		var request = $.post("<?= base_url('api/controller_inventory/getInventoryList') ?>",itemObject , 'json');
 
 		request.done(function(response) {
 			$('#inventoryTable').empty();
 			var result = jQuery.parseJSON(response);
-
+			console.log(response);
 			if (!result['error'].length) {
 				for (var x = 0; x < result.data.length; x++ ) {
 					var invCloneTable = $(".invCloneTable").find('.invToBeClonedTable').clone();

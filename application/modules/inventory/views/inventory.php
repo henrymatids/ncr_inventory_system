@@ -7,10 +7,10 @@
       </div>
       <div class="tableFloatRight">
         <div class="tableSearch">
-          <input type="text" class="form-control input-sm" name="searchBar">
-        </div>
-        <div class="tableFloatRight">
-          <button type="submit" id="searchBtn" class="btn btn-info btn-sm">Search</button>
+          <input type="text" class="form-control input-sm" name="searchBar" placeholder="Search">
+         <!--  <span class="input-group-addon">
+            <i class="fa fa-search"></i>
+          </span> -->
         </div>
       </div>
     </div>

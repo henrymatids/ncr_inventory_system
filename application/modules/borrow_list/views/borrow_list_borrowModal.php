@@ -23,11 +23,11 @@
               </div>
               <div class="col-md-12 form-group">
                 <label class="col-md-3">Name:</label>
-                <div class="col-md-9"><input type="text" class="form-control input-sm" name="borrowItemName"/></div>
+                <div class="col-md-9"><input type="text" class="form-control input-sm" name="borrowItemName" readonly="readonly" /></div>
               </div>
               <div class="col-md-12 form-group">
                 <label class="col-md-3">Brand Model:</label>
-                <div class="col-md-9"><input type="text" class="form-control input-sm" name="borrowItemBrand"/></div>
+                <div class="col-md-9"><input type="text" class="form-control input-sm" name="borrowItemBrand" readonly="readonly" /></div>
               </div>
               <div class="col-md-12 form-group">
                 <label class="col-md-3">Date borrowed:</label>
