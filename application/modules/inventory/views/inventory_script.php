@@ -7,7 +7,7 @@
 
   /****
   *	SEARCH BAR
-  ****/
+   ****/
 		$('[name=searchBar').on('input', function(e){
 			var searchBarValue = $(this).val();
 			populateInventoryTable(searchBarValue);
