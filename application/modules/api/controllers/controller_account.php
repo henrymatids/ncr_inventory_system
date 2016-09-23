@@ -82,7 +82,7 @@ class Controller_account extends API_Controller {
 	}
 
 	public function getAccountList() {
-		$data = $this->account->retrieveAllAccount();
+		$data = $this->account->retrieveAllAccount($this->input->post('firstname'));
 		$this->responseData($data);
 		$this->outputResponse();
 	}

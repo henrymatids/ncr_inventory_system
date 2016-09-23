@@ -62,7 +62,7 @@ class Controller_inventory extends API_Controller {
 	}
 
 	public function getAllAvailableItems() {
-		$data = $this->inventory->retrieve_inventory(1);
+		$data = $this->inventory->retrieve_inventory(1, $this->input->post('item_name'));
 		$this->responseData($data);
 		$this->outputResponse();
 	}

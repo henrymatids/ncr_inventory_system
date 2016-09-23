@@ -11,5 +11,8 @@ class Dashboard extends MY_controller{
 			'home/home_script',
 			array("activeHeaders"=>"Home")
 		);
+
+		/*	LOAD MODAL 	*/
+		$this->load->view('dashboard_profileModal');
 	}
 }
