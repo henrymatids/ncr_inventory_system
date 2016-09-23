@@ -45,15 +45,20 @@ class Model_inventory extends CI_model
 		return $this->db->delete($this->table);
 	}
 
-	public function retrieve_inventory($qty = FALSE, $itemName = FALSE) {
+	public function retrieve_inventory($qty = FALSE, $searchBarValue = FALSE) {
 		$this->db->start_cache();
 		$this->db->flush_cache();
 
 		if ($qty) {
 			$this->db->where('qty >=', $qty);
 		}
-		if ($itemName) {
-			$this->db->like("item_name", $itemName);
+		if ($searchBarValue) {
+			$this->db->where("id LIKE '%$searchBarValue%' OR 
+							  qty LIKE '%$searchBarValue%' OR
+							  item_name LIKE '%$searchBarValue%' OR
+							  brand_model LIKE '%$searchBarValue%' OR
+							  date_acquired LIKE '%$searchBarValue%' OR
+							  remarks LIKE '%$searchBarValue%'");
 		}
 		$query = $this->db->get($this->table);
 

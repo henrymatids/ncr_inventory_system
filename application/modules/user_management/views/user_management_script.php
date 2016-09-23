@@ -5,12 +5,18 @@
 		*********/
 				populateAccountTable();
 
-
+			/*****
+			*	SEARCH BAR
+			******/
+			$('[name=searchBar').on('input', function(e) {
+				var searchBarValue = $(this).val();
+				populateAccountTable(searchBarValue);
+			});
 		/*******
-		* EDIT MODAL
+		*	EDIT MODAL
 		*********/
 			/*****
-			*POPULATE EDIT MODAL
+			*	POPULATE EDIT MODAL
 			********/
 				$('#EditAccountModal').on('show.bs.modal', function(response) {
 				    var source = $(response.relatedTarget);
@@ -32,6 +38,7 @@
 						$("[name=editUserFirstname]").val(accountFirstname);
 						$("[name=editUserMiddlename]").val(accountMiddlename);
 						$("[name=editUserLastname]").val(accountLastname);
+						$("[name=editUserAccountType]").val(accountType);
 					});
 				});
 
@@ -136,6 +143,7 @@
 						middlename : "Middlename is required",
 						lastname : "Lastname is required"
 					}
+					// ErrorClass : "my-error-class";
 				});
 
 				$('#modalForm').ajaxForm({
@@ -161,8 +169,15 @@
 			});
 
 	/* POPULATE TABLE */
-	function populateAccountTable(){
-		var request = $.post("<?= base_url('api/controller_account/getAccountList') ?>", {}, 'json');
+	function populateAccountTable(firstname = false){
+		if (firstname) {
+			var accountObject = {
+				firstname : firstname
+			};
+		} else {
+			var accountObject = {};
+		}
+		var request = $.post("<?= base_url('api/controller_account/getAccountList') ?>", accountObject, 'json');
 
 		request.done(function(response){
 			$('#userManagementTable').empty();

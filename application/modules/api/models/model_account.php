@@ -47,9 +47,19 @@ class Model_account extends CI_model
 		return $this->db->delete($this->table);
 	}
 
-	public function retrieveAllAccount(){
+	public function retrieveAllAccount($searchBarValue = false){
 		$this->db->start_cache();
 		$this->db->flush_cache();
+
+		if ($searchBarValue) {
+			$this->db->where("user_id LIKE '%$searchBarValue%' OR 
+				              username LIKE '%$searchBarValue%' OR
+				              account_type LIKE '%$searchBarValue%' OR
+				              id_number LIKE '%$searchBarValue%' OR
+				              firstname LIKE '%$searchBarValue%' OR
+				              middlename LIKE '%$searchBarValue%' OR
+				              lastname LIKE '%$searchBarValue%'");
+		}
 
 		$query = $this->db->select("*")
 										->from($this->table)

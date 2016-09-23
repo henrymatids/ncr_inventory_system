@@ -2,10 +2,14 @@
 	$(document).ready(function(){
 
 		populateBorrowTable();
-
-/*BORROW MODAL*/
-		/*POPULATE BORROW MODAL*/
-		$('#borrowModal').on('show.bs.modal', function(response){
+/*	SEARCH BAR 	*/
+		$('[name=searchBar]').on('input', function(e) {
+			var searchBarValue = $(this).val();
+			populateBorrowTable(searchBarValue);
+		});
+/*	BORROW MODAL 	*/
+		/*	POPULATE BORROW MODAL 	*/
+		$('#borrowModal').on('show.bs.modal', function(response) {
 			var source = $(response.relatedTarget);
 		    currentRow = source.closest('tr');
 		    responseID = currentRow.attr('id');
@@ -41,8 +45,15 @@
 	});
 
 	/*	POPULATE TABLE 	*/
-	function populateBorrowTable() {
-		var request = $.post("<?= base_url('api/controller_inventory/getAllAvailableItems') ?>", {} , 'json');
+	function populateBorrowTable(itemName = false) {
+		if (itemName) {
+			var itemObject = {
+				item_name : itemName
+			};
+		} else {
+			var itemObject = {};
+		}
+		var request = $.post("<?= base_url('api/controller_inventory/getAllAvailableItems') ?>", itemObject , 'json');
 
 		request.done(function(response) {
 			$('#borrowTable').empty();

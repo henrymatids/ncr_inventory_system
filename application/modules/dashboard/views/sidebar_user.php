@@ -6,8 +6,8 @@
             Dashboard
           </a>
         </li>
-        <li><a href="<?=base_url('borrow_list')?>"><i class="fa fa-edit"></i> Borrow item</a></li>
-        <li><a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i> Calendar</a></li>
+        <li><a href="<?=base_url('borrow_list')?>"><i class="fa fa-archive"></i> Borrow item</a></li>
+        <li><a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i> Schedule</a></li>
     </ul>
   </div>
 </div>

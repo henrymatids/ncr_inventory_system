@@ -70,7 +70,7 @@
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $userName ?><b class="caret"></b></a>
                           <ul class="dropdown-menu animated fadeInUp">
-                            <li><a href="profile.html">Profile</a></li>
+                            <li><button class="btn btn-default btn-sm" data-toggle="modal" data-target="#profileModal">Profile</button></li>
                             <li><a href="<?= base_url('login/logout') ?>">Logout</a></li>
                           </ul>
                         </li>

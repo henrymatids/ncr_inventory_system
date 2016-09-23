@@ -1,16 +1,16 @@
 <div class="content-box-large col-lg-12">
     <div class="col-lg-12">
-      <div class="tableFloatLeft">
+      <div class="tableFloatLeft col-lg-4">
         <button type="button" id="addItemBtn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addItemModal">
           <i class="fa fa-plus"></i> Add Item
         </button>
       </div>
-      <div class="tableFloatRight">
-        <div class="tableSearch">
-          <input type="text" class="form-control input-sm" name="searchBar" placeholder="Search">
-         <!--  <span class="input-group-addon">
+      <div class="tableFloatRight col-lg-4">
+        <div class="tableSearch input-group">
+          <input type="text" class="form-control" name="searchBar" placeholder="Search">
+          <span class="input-group-addon">
             <i class="fa fa-search"></i>
-          </span> -->
+          </span>
         </div>
       </div>
     </div>
@@ -53,5 +53,8 @@
         </table>
       </div>
     </div>
-    </div>
+  </div>
+  <div class="col-lg-12">
+    <button class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print</button>
+  </div>
 </div>
