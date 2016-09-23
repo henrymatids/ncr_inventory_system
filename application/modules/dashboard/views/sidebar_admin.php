@@ -9,9 +9,8 @@
         <li><a href="<?=base_url('user_management')?>"><i class="fa fa-users"></i>Accounts</a></li>
         <li><a href="<?=base_url('inventory')?>"><i class="fa fa-list"></i>Inventory</a></li>
         <li><a href="<?=base_url('borrow_list')?>"><i class="fa fa-archive"></i>Borrowed items</a></li>
-        <li>
-          <a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i>Schedules</a>
-        </li>
+        <li><a href="<?=base_url('borrow_list')?>"><i class="fa fa-sign-language"></i>Returned items</a></li>
+        <li><a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i>Schedules</a></li>
     </ul>
   </div>
 </div>
