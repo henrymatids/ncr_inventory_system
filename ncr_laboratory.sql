@@ -3,15 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
-
-
-
-
-
-
-
--- Generation Time: Sep 23, 2016 at 04:17 PM
-
+-- Generation Time: Sep 26, 2016 at 08:31 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -82,14 +74,23 @@ INSERT INTO `account_information` (`fk_id`, `id_number`, `firstname`, `middlenam
 --
 
 CREATE TABLE `borrow_log` (
-  `fk_id` int(11) NOT NULL,
-  `id_number` int(11) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `item_name` varchar(50) NOT NULL,
-  `brand_model` varchar(50) NOT NULL,
-  `date_borrowed` date NOT NULL,
-  `date_returned` date NOT NULL
+  `log_id` int(11) NOT NULL,
+  `user_id_number` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `borrow_qty` int(11) NOT NULL,
+  `date_borrowed` date DEFAULT NULL,
+  `date_returned` date DEFAULT NULL,
+  `status` int(11) NOT NULL COMMENT '1-pending 2-approved 3-returned'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `borrow_log`
+--
+
+INSERT INTO `borrow_log` (`log_id`, `user_id_number`, `item_id`, `borrow_qty`, `date_borrowed`, `date_returned`, `status`) VALUES
+(10, 11105191, 6, 1, '2016-09-26', '2016-09-28', 3),
+(13, 11105191, 6, 1, '2016-09-26', NULL, 1),
+(14, 11105191, 6, 1, '2016-09-27', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -135,7 +136,7 @@ ALTER TABLE `account_information`
 -- Indexes for table `borrow_log`
 --
 ALTER TABLE `borrow_log`
-  ADD PRIMARY KEY (`fk_id`);
+  ADD PRIMARY KEY (`log_id`);
 
 --
 -- Indexes for table `inventory`
@@ -153,6 +154,11 @@ ALTER TABLE `inventory`
 ALTER TABLE `account`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
+-- AUTO_INCREMENT for table `borrow_log`
+--
+ALTER TABLE `borrow_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
@@ -166,12 +172,6 @@ ALTER TABLE `inventory`
 --
 ALTER TABLE `account_information`
   ADD CONSTRAINT `account_information_ibfk_1` FOREIGN KEY (`fk_id`) REFERENCES `account` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `borrow_log`
---
-ALTER TABLE `borrow_log`
-  ADD CONSTRAINT `borrow_log_ibfk_1` FOREIGN KEY (`fk_id`) REFERENCES `account_information` (`fk_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
