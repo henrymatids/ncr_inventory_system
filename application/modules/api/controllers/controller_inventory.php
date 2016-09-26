@@ -33,6 +33,7 @@ class Controller_inventory extends API_Controller {
 		}
 		$this->outputResponse();
 	}
+
 	public function updateItem(){
 		$data = array(
 						'qty' => $this->input->post('editItemQuantity'),
@@ -45,6 +46,7 @@ class Controller_inventory extends API_Controller {
 		$this->inventory->update_item($data,$this->input->post('itemID'));
 		$this->outputResponse();
 	}
+
 	public function deleteItem(){
 		$result = $this->inventory->delete_item($this->input->post('itemId'));
 		
@@ -55,8 +57,8 @@ class Controller_inventory extends API_Controller {
 		}
 		$this->outputResponse();
 	}
-	public function getInventoryList() {
 
+	public function getInventoryList() {
 		$data = $this->inventory->retrieve_inventory(0, $this->input->post('item_name'));
 		$this->responseData($data);
 		$this->outputResponse();
@@ -74,7 +76,7 @@ class Controller_inventory extends API_Controller {
 
 		$data = array('user_id_number' 	=> $this->input->post('borrowIdNumber'),
 					  'item_id'			=> $item[0]['id'],
-					  'qty'				=> $this->input->post('borrowItemQuantity'),
+					  'borrow_qty'				=> $this->input->post('borrowItemQuantity'),
 					  'date_borrowed'	=> $this->input->post('borrowItemDate'),
 					  'status'			=> 1
 						);
@@ -88,6 +90,41 @@ class Controller_inventory extends API_Controller {
 		$data = $this->borrow_log->retrieveBorrowLog(1, $this->input->post('searchBarValue'));
 
 		$this->responseData($data);
+		$this->outputResponse();
+	}
+
+	public function getAllReturnedItems() {
+		$data = $this->borrow_log->retrieveBorrowLog(3, $this->input->post('searchBarValue'));
+
+		$this->responseData($data);
+		$this->outputResponse();
+	}
+
+	public function changeItemStatus() {
+
+		$data = array('status' => $this->input->post('status'));
+
+		$response = $this->borrow_log->changeBorrowedItemStatus($data, $this->input->post('id'));
+
+		if (!$response) {
+			$this->responseError(44, 'Changing status failed');
+		} else {
+			$this->responseData($this->input->post());
+		}
+
+		$this->outputResponse();
+	}
+
+	public function deletePendingItem(){
+
+		$response = $this->borrow_log->deleteBorrowedItem($this->input->post('id'));
+
+		if(!$response) {
+			$this->responseError(44, 'Failed Delete');
+		} else {
+			$this->responseData($this->input->post('id'));
+		}
+
 		$this->outputResponse();
 	}
 }

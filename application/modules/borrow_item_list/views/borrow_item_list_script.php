@@ -1,12 +1,15 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
+/*	POPULATE TABLE	*/
 		populateBorrowTable();
+
 /*	SEARCH BAR 	*/
 		$('[name=searchBar]').on('input', function(e) {
 			var searchBarValue = $(this).val();
 			populateBorrowTable(searchBarValue);
 		});
+		
 /*	BORROW MODAL 	*/
 		/*	POPULATE BORROW MODAL 	*/
 		$('#borrowModal').on('show.bs.modal', function(response) {
@@ -48,7 +51,6 @@
 				 format : "yyyy/mm/dd"
 			}).datepicker("setDate", new Date());
 		});
-
 	});
 
 	/*	POPULATE TABLE 	*/

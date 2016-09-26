@@ -12,6 +12,68 @@
 				var searchBarValue = $(this).val();
 				populatePendingItemsTable(searchBarValue);
 			});
+	/*	APPROVE MODAL 	*/
+		/*	GET ID 	*/
+		 	$("#approveModal").on('show.bs.modal', function(response) {
+			    var source = $(response.relatedTarget);
+			    currentRow = source.closest('tr');
+			    responseID = currentRow.attr('id');
+
+			    $("#"+responseID).each(function() {
+			    	$("[name=approveModalID]").attr("id",responseID);
+			    });
+			});
+
+		/* APPROVE SELECTED ITEM */
+		    $("#approveYes").on('click', function() {
+				var id = {
+						id : $("[name=approveModalID]").attr("id"),
+						status : 2
+					};
+				var request = $.post("<?= base_url('api/controller_inventory/changeItemStatus') ?>", id, 'json');
+
+		    	request.done(function(response) {
+		    		var result = jQuery.parseJSON(response);
+		    		console.log(response);
+		    		if(result['error'].length){
+		    			console.log(result['error']);
+		    		} else {
+		    			$('#approveModal').modal('hide');
+		    			populatePendingItemsTable();
+		    		}
+		    	});
+		    });
+	/* 	DELETE MODAL 	*/
+		/*	GET ID 	*/
+		 	$("#deleteModal").on('show.bs.modal', function(response) {
+			    var source = $(response.relatedTarget);
+			    currentRow = source.closest('tr');
+			    responseID = currentRow.attr('id');
+
+			    $("#"+responseID).each(function() {
+			    	$("[name=deleteModalID]").attr("id",responseID);
+			    });
+			});
+
+		/* DELETE SELECTED ITEM */
+		    $("#deleteYes").on('click', function() {
+				var id = {
+						id : $("[name=deleteModalID]").attr("id")
+					};
+				var request = $.post("<?= base_url('api/controller_inventory/deletePendingItem') ?>", id, 'json');
+
+		    	request.done(function(response) {
+		    		var result = jQuery.parseJSON(response);
+		    		console.log(response);
+		    		if(result['error'].length){
+		    			console.log(result['error']);
+		    		} else {
+		    			$('#deleteModal').modal('hide');
+		    			populatePendingItemsTable();
+		    		}
+		    	});
+		    });
+
 	});
 
 	function populatePendingItemsTable(searchBarValue = false) {
@@ -28,15 +90,13 @@
 		request.done(function(response){
 			$('#pendingTable').empty();
 			var result = jQuery.parseJSON(response);
-			console.log("RAW: "+response);
-			console.log("PARSED: "+result);
 
 			if(!result['error'].length){
 				for(var x = 0; x < result.data.length; x++){
 					var pendingCloneTable = $('.pendingCloneTable').find('.pendingToBeClonedTable').clone();
 					var resultData = result.data[x];
 
-					pendingCloneTable.attr('id', resultData.id);
+					pendingCloneTable.attr('id', resultData.log_id);
 					pendingCloneTable.find('.pendingBorrowedBy').text(resultData.user_id_number);
 					pendingCloneTable.find('.pendingQuantity').text(resultData.borrow_qty);
 					pendingCloneTable.find('.pendingItemName').text(resultData.item_name);

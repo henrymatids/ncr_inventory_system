@@ -55,9 +55,9 @@ class Model_inventory extends CI_model
 		}
 		if ($searchBarValue) {
 			$this->db->where("id LIKE '%$searchBarValue%' OR 
-							  item_name LIKE '%$searchBarValue%' OR
-							  brand_model LIKE '%$searchBarValue%' OR
-							  date_acquired LIKE '%$searchBarValue%'
+							  qty >= '$qty' AND item_name LIKE '%$searchBarValue%' OR 
+							  qty >= '$qty' AND brand_model LIKE '%$searchBarValue%' OR 
+							  qty >= '$qty' AND date_acquired LIKE '%$searchBarValue%'
 							  ");
 		}
 		$query = $this->db->get($this->table);
@@ -78,4 +78,5 @@ class Model_inventory extends CI_model
 
 		return $this->db->get($this->table)->result_array();
 	}
+
 }

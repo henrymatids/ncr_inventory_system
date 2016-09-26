@@ -22,6 +22,7 @@
 	            <th>Returned By</th>
 	            <th>Quantity</th>
 	            <th>Item Name</th>
+	            <th>Brand Model</th>
 	            <th>Date Borrowed</th>
 	            <th>Date Returned</th>
 	          </tr>
@@ -35,6 +36,7 @@
 	            	<td class="returnedBy"></td>
 		            <td class="returnedQuantity"></td>
 		            <td class="returnedItemName"></td>
+		            <td class="returnedBrandModel"></td>
 		            <td class="dateBorrowed"></td>
 		            <td class="returnedDate"></td>
 	          	</tr>
