@@ -6,6 +6,7 @@ class Controller_inventory extends API_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model(['model_inventory' => 'inventory']);
+		$this->load->model(['model_borrow_log' => 'borrow_log']);
 	}
 
 	public function addItem() {
@@ -63,6 +64,29 @@ class Controller_inventory extends API_Controller {
 
 	public function getAllAvailableItems() {
 		$data = $this->inventory->retrieve_inventory(1, $this->input->post('item_name'));
+		$this->responseData($data);
+		$this->outputResponse();
+	}
+
+	public function borrowedItemForApproval() {
+		$item = $this->inventory->retrieveItemID(	$this->input->post('borrowItemName'),
+													$this->input->post('borrowItemBrand'));
+
+		$data = array('user_id_number' 	=> $this->input->post('borrowIdNumber'),
+					  'item_id'			=> $item[0]['id'],
+					  'qty'				=> $this->input->post('borrowItemQuantity'),
+					  'date_borrowed'	=> $this->input->post('borrowItemDate'),
+					  'status'			=> 1
+						);
+
+		$this->borrow_log->insertBorrowedItem($data);
+		$this->responseData($data);
+		$this->outputResponse();
+	}
+
+	public function getAllPendingItems() {
+		$data = $this->borrow_log->retrieveBorrowLog(1, $this->input->post('searchBarValue'));
+
 		$this->responseData($data);
 		$this->outputResponse();
 	}

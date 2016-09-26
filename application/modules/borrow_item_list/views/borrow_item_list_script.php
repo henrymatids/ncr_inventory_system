@@ -35,11 +35,18 @@
 		});
 
 		$('#borrowModal').on('show.bs.modal', function(){
-				$("[name=borrowItemDate]").datepicker({
-					 autoclose : true,
-					 todayHighlight : true,
-					 toggleActive : true
-				}).datepicker("setDate", new Date());
+			$('#borrowListModalForm').attr('action',"<?=base_url('api/controller_inventory/borrowedItemForApproval');?>");
+			$('#borrowListModalForm').ajaxForm({
+				success : function(event) {
+					$('#borrowModal').modal('hide');
+				}
+			});
+			$("[name=borrowItemDate]").datepicker({
+				  autoclose : true,
+				 todayHighlight : true,
+				 toggleActive : true,
+				 format : "yyyy/mm/dd"
+			}).datepicker("setDate", new Date());
 		});
 
 	});

@@ -19,6 +19,7 @@ class Model_inventory extends CI_model
 
 		if($item_name)
 			$this->db->where('item_name', $item_name);
+
 		if($item_description)
 			$this->db->where('item_description', $item_description);
 
@@ -54,11 +55,10 @@ class Model_inventory extends CI_model
 		}
 		if ($searchBarValue) {
 			$this->db->where("id LIKE '%$searchBarValue%' OR 
-							  qty LIKE '%$searchBarValue%' OR
 							  item_name LIKE '%$searchBarValue%' OR
 							  brand_model LIKE '%$searchBarValue%' OR
-							  date_acquired LIKE '%$searchBarValue%' OR
-							  remarks LIKE '%$searchBarValue%'");
+							  date_acquired LIKE '%$searchBarValue%'
+							  ");
 		}
 		$query = $this->db->get($this->table);
 
@@ -67,5 +67,15 @@ class Model_inventory extends CI_model
 			return $result;
 		}
 		return false;
+	}
+
+	public function retrieveItemID($itemName, $brandModel) {
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
+		$this->db->where("item_name", $itemName);
+		$this->db->where("brand_model", $brandModel);
+
+		return $this->db->get($this->table)->result_array();
 	}
 }

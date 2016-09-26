@@ -7,7 +7,7 @@
         </button>
         <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i> Borrow Item</h4>
       </div>
-      <form method="post" action="" id="editItemModalForm">
+      <form method="post" action="" id="borrowListModalForm">
         <div class="modal-body">
           <div class="row">
               <div class="col-md-12 form-group">
