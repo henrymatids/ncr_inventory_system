@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2016 at 08:31 PM
+-- Generation Time: Sep 27, 2016 at 02:17 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -80,7 +80,7 @@ CREATE TABLE `borrow_log` (
   `borrow_qty` int(11) NOT NULL,
   `date_borrowed` date DEFAULT NULL,
   `date_returned` date DEFAULT NULL,
-  `status` int(11) NOT NULL COMMENT '1-pending 2-approved 3-returned'
+  `status` int(11) NOT NULL COMMENT '1-pending 2-approved 3-returned 4-borrowed'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -89,8 +89,12 @@ CREATE TABLE `borrow_log` (
 
 INSERT INTO `borrow_log` (`log_id`, `user_id_number`, `item_id`, `borrow_qty`, `date_borrowed`, `date_returned`, `status`) VALUES
 (10, 11105191, 6, 1, '2016-09-26', '2016-09-28', 3),
-(13, 11105191, 6, 1, '2016-09-26', NULL, 1),
-(14, 11105191, 6, 1, '2016-09-27', NULL, 1);
+(13, 11105191, 6, 1, '2016-09-26', '2016-09-30', 3),
+(14, 11105191, 6, 1, '2016-09-27', '2016-09-08', 3),
+(15, 11105191, 6, 1, '2016-09-27', '2016-09-27', 3),
+(16, 11105191, 6, 1, '2016-09-27', NULL, 2),
+(17, 11132123, 6, 1, '2016-09-27', NULL, 1),
+(18, 11132123, 8, 1, '2016-09-27', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -157,7 +161,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `borrow_log`
 --
 ALTER TABLE `borrow_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `inventory`
 --
