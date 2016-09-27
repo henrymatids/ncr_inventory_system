@@ -39,7 +39,7 @@
 			            <td class="pendingBrandModel"></td>
 			            <td class="pendingDateBorrowed"></td>
 			            <td class="pendingAction">
-			            	<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#approveModal">
+			            	<button class="btn btn-primary btn-xs" id="approveBtn" data-toggle="modal" data-target="#approveModal">
 			            		<i class="fa fa-check"></i>
 			            	</button>
 			            	<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
@@ -52,6 +52,6 @@
 	  	</div>
 	</div>
 	<div class="col-lg-12">
-  	<button class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print</button>
+  	<button class="btn btn-default btn-sm" id="exportTable"><i class="fa fa-download"></i> Export</button>
 	</div>
 </div>

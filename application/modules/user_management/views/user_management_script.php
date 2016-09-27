@@ -4,7 +4,15 @@
 		*	LOAD TABLE
 		*********/
 				populateAccountTable();
-
+			/*****
+			*	EXPORT TABLE
+			******/
+			$('#exportTable').click(function(){
+				$('.table').tableExport({
+										type:'excel',
+										escape:'false'
+												});
+			});
 			/*****
 			*	SEARCH BAR
 			******/

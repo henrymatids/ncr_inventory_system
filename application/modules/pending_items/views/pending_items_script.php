@@ -1,10 +1,20 @@
 <script type="text/javascript">
 	$(document).ready(function(){
+		requestLoggedInUser();
 		/******
 		*	POPULATE TABLE
 		******/
-			populatePendingItemsTable();
 
+			populatePendingItemsTable();
+			/*****
+			*	EXPORT TABLE
+			******/
+			$('#exportTable').click(function(){
+				$('.table').tableExport({
+										type:'excel',
+										escape:'false'
+												});
+			});
 			/******
 			*	SEARCH BAR
 			******/
@@ -106,6 +116,18 @@
 
 				 $("#pendingTable").append(pendingCloneTable);
 				}
+			}
+		});
+	}
+
+	function requestLoggedInUser() {
+		var request = $.post("<?=base_url('api/controller_account/getLoggedInUser')?>", {}, 'json');
+
+		request.done(function(response){
+			var result = jQuery.parseJSON(response);
+			console.log(result.data);
+			if(result.data == "Student") {
+				$("#approveBtn").hide();
 			}
 		});
 	}

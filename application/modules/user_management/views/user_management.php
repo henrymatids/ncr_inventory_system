@@ -2,7 +2,7 @@
 	<div class="col-lg-12">
 		<div class="tableFloatLeft col-lg-4">
 		    <button type="button" id="addAccountBtn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addAccountModal">
-		    	<i class="fa fa-plus"></i> Add Account
+		    	<i class="fa fa-user-plus"></i> Add Account
 		    </button>
 		</div>
       <div class="tableFloatRight col-lg-4">
@@ -57,7 +57,7 @@
     </div>
   </div>
   <div class="col-lg-12">
-    <button class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print</button>
+    <button class="btn btn-default btn-sm" id="exportTable"><i class="fa fa-download"></i> Export</button>
   </div>
 </div>
 	

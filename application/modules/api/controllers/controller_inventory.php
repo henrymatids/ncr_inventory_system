@@ -86,6 +86,16 @@ class Controller_inventory extends API_Controller {
 		$this->outputResponse();
 	}
 
+	public function borrowedItemChangeStatus() {
+
+		$data = array('status'=> 3,
+					   'date_returned' => $this->input->post('borrowedItemDate'));
+
+		$response = $this->borrow_log->changeBorrowedItemStatus($data, $this->input->post('id'));
+		$this->responseData($response);
+		$this->outputResponse();
+	}
+
 	public function getAllPendingItems() {
 		$data = $this->borrow_log->retrieveBorrowLog(1, $this->input->post('searchBarValue'));
 
@@ -115,7 +125,7 @@ class Controller_inventory extends API_Controller {
 		$this->outputResponse();
 	}
 
-	public function deletePendingItem(){
+	public function deletePendingItem() {
 
 		$response = $this->borrow_log->deleteBorrowedItem($this->input->post('id'));
 
@@ -123,6 +133,19 @@ class Controller_inventory extends API_Controller {
 			$this->responseError(44, 'Failed Delete');
 		} else {
 			$this->responseData($this->input->post('id'));
+		}
+
+		$this->outputResponse();
+	}
+
+	public function getUserBorrowedItems() {
+
+		$response = $this->borrow_log->getUserBorrowedItems(2, $this->input->post('search_BarValue'), $this->input->post('id_number'));
+
+		if(!$response) {
+			$this->responseError(43,'Failed to retrieve');
+		} else {
+			$this->responseData($response);
 		}
 
 		$this->outputResponse();

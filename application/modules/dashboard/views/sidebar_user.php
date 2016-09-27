@@ -7,6 +7,7 @@
           </a>
         </li>
         <li><a href="<?=base_url('borrow_item_list')?>"><i class="fa fa-archive"></i>Available items</a></li>
+        <li><a href="<?=base_url('pending_items')?>"><i class="fa fa-plus"></i>Pending Items</a></li>
         <li><a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i> Schedule</a></li>
     </ul>
   </div>

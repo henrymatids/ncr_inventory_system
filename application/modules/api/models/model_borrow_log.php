@@ -18,6 +18,7 @@ class Model_borrow_log extends CI_model {
 							  $this->table.status = '$status' AND $this->table.date_borrowed LIKE '%$searchBarValue%'
 							");
 		}
+
 		$this->db->select('*')
 							  ->from($this->table)
 							  ->join('inventory', 'inventory.id = borrow_log.item_id');
@@ -47,5 +48,28 @@ class Model_borrow_log extends CI_model {
 		$this->db->where('log_id', $id);
 
 		return $this->db->delete($this->table);
+	}
+
+	public function getUserBorrowedItems($status = FALSE, $searchBarValue = FALSE, $user_id_number = FALSE) {
+
+		if($status) {
+			$this->db->where('status', $status);
+		}
+
+		if($user_id_number) {
+			$this->db->where('user_id_number', $user_id_number);
+		}
+
+		if($searchBarValue) {
+			$this->db->where("inventory.item_name LIKE '%$searchBarValue%' OR
+							  $this->table.status = '$status' AND $this->table.user_id_number = '$user_id_number' AND inventory.brand_model LIKE '%$searchBarValue%' OR
+							  $this->table.status = '$status' AND $this->table.user_id_number = '$user_id_number' AND $this->table.user_id_number LIKE '%$searchBarValue%' OR
+							  $this->table.status = '$status' AND $this->table.user_id_number = '$user_id_number' AND $this->table.date_borrowed LIKE '%$searchBarValue%'
+							");
+		}
+		$this->db->select('*')
+							  ->from($this->table)
+							  ->join('inventory', 'inventory.id = borrow_log.item_id');
+		return $this->db->get()->result_array();
 	}
 }

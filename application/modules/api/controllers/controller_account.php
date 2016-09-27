@@ -97,6 +97,14 @@ class Controller_account extends API_Controller {
 
 		$this->outputResponse();
 	}
+
+	public function getLoggedInUser() {
+		$result = $this->session->userdata();
+
+		$this->responseData($result['user_currentlyloggedIn']['userType']);
+		$this->outputResponse();
+	}
+
 	public function username_is_unique($str) {
 		echo "<script>console.log('qweqweqweq')</script>";
 		$result = $this->account->retrieveAccount($str);

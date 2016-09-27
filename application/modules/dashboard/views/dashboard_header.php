@@ -30,6 +30,14 @@
     <?=plugin_css('fullcalendar/fullcalendar.css');?>
     <?=plugin_script('fullcalendar/lib/moment.min.js');?>
     <?=plugin_script('fullcalendar/fullcalendar.js');?>
+    <!-- Export Table -->
+    <?=plugin_script('export/jquery.base64.js')?>   <!--INSTALLATION-->
+    <?=plugin_script('export/tableExport.js')?> <!--INSTALLATION-->
+    <?=plugin_script('export/jspdf/libs/sprintf.js')?>  <!--EXPORT TO PDF-->
+    <?=plugin_script('export/jspdf/jspdf.js')?> <!--EXPORT TO PDF-->
+    <?=plugin_script('export/jspdf/libs/base64.js')?> <!--EXPORT TO PDF-->
+    <?=plugin_script('export/html2canvas.js')?> <!--EXPORT TO PNG-->
+
   </head>
   <body>
     <?php

@@ -3,7 +3,16 @@
 
 /*	POPULATE TABLE	*/
 		populateBorrowTable();
-
+	/*****
+	*	EXPORT TABLE
+	******/
+		$('#exportTable').click(function(){
+			$('.table').tableExport({
+									type:'excel',
+									escape:'false'
+											});
+		});
+		
 /*	SEARCH BAR 	*/
 		$('[name=searchBar]').on('input', function(e) {
 			var searchBarValue = $(this).val();

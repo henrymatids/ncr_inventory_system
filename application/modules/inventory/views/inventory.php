@@ -55,6 +55,6 @@
     </div>
   </div>
   <div class="col-lg-12">
-    <button class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print</button>
+    <button class="btn btn-default btn-sm" id="exportTable"><i class="fa fa-download"></i> Export</button>
   </div>
 </div>
