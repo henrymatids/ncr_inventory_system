@@ -15,13 +15,18 @@ class Model_borrow_log extends CI_model {
 			$this->db->where("inventory.item_name LIKE '%$searchBarValue%' OR
 							  $this->table.status = '$status' AND inventory.brand_model LIKE '%$searchBarValue%' OR
 							  $this->table.status = '$status' AND $this->table.user_id_number LIKE '%$searchBarValue%' OR
-							  $this->table.status = '$status' AND $this->table.date_borrowed LIKE '%$searchBarValue%'
+							  $this->table.status = '$status' AND $this->table.date_borrowed LIKE '%$searchBarValue%' OR
+							  $this->table.status = '$status' AND account_information.firstname LIKE '%$searchBarValue%' OR
+							  $this->table.status = '$status' AND account_information.middlename LIKE '%$searchBarValue%' OR
+							  $this->table.status = '$status' AND account_information.lastname LIKE '%searchBarValue%' OR
+							  $this->table.status = '$status' AND inventory.item_name LIKE '%$searchBarValue%'
 							");
 		}
 
 		$this->db->select('*')
 							  ->from($this->table)
-							  ->join('inventory', 'inventory.id = borrow_log.item_id');
+							  ->join('inventory', 'inventory.id = borrow_log.item_id')
+							  ->join('account_information', 'account_information.id_number = borrow_log.user_id_number');
 		return $this->db->get()->result_array();
 	}
 
@@ -50,7 +55,7 @@ class Model_borrow_log extends CI_model {
 		return $this->db->delete($this->table);
 	}
 
-	public function getUserBorrowedItems($status = FALSE, $searchBarValue = FALSE, $user_id_number = FALSE) {
+	public function getUserBorrowedItems($status = FALSE, $searchBarValue = FALSE, $user_id_number = FALSE, $log_id = FALSE) {
 
 		if($status) {
 			$this->db->where('status', $status);
@@ -58,6 +63,10 @@ class Model_borrow_log extends CI_model {
 
 		if($user_id_number) {
 			$this->db->where('user_id_number', $user_id_number);
+		}
+
+		if($log_id) {
+			$this->db->where('log_id', $log_id);
 		}
 
 		if($searchBarValue) {
@@ -70,6 +79,19 @@ class Model_borrow_log extends CI_model {
 		$this->db->select('*')
 							  ->from($this->table)
 							  ->join('inventory', 'inventory.id = borrow_log.item_id');
+		return $this->db->get()->result_array();
+	}
+
+	public function getDistinctUsers($status = FALSE) {
+
+		if($status) {
+			$this->db->where("status", $status);
+		}
+
+		$this->db->select('DISTINCT `user_id_number`')
+														->from($this->table)
+														->join('inventory', 'inventory.id = borrow_log.item_id');
+
 		return $this->db->get()->result_array();
 	}
 }

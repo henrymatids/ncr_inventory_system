@@ -12,6 +12,7 @@
         <li><a href="<?=base_url('pending_items')?>"><i class="fa fa-cog"></i>Pending Items</a></li>
         <li><a href="<?=base_url('borrowed_items')?>"><i class="fa fa-btc"></i>Borrowed items</a></li>
         <li><a href="<?=base_url('items_returned')?>"><i class="fa fa-sign-language"></i>Returned items</a></li>
+        <li><a href="<?=base_url('account_liabilities')?>"><i class="fa fa-book"></i>Liabilities</a></li>
         <li><a href="<?=base_url('calendar')?>"><i class="fa fa-calendar"></i>Schedules</a></li>
     </ul>
   </div>

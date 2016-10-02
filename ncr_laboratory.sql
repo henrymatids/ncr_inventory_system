@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2016 at 02:17 PM
+-- Generation Time: Oct 02, 2016 at 07:12 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -88,13 +88,14 @@ CREATE TABLE `borrow_log` (
 --
 
 INSERT INTO `borrow_log` (`log_id`, `user_id_number`, `item_id`, `borrow_qty`, `date_borrowed`, `date_returned`, `status`) VALUES
-(10, 11105191, 6, 1, '2016-09-26', '2016-09-28', 3),
-(13, 11105191, 6, 1, '2016-09-26', '2016-09-30', 3),
-(14, 11105191, 6, 1, '2016-09-27', '2016-09-08', 3),
-(15, 11105191, 6, 1, '2016-09-27', '2016-09-27', 3),
-(16, 11105191, 6, 1, '2016-09-27', NULL, 2),
-(17, 11132123, 6, 1, '2016-09-27', NULL, 1),
-(18, 11132123, 8, 1, '2016-09-27', NULL, 2);
+(17, 11132123, 6, 1, '2016-09-27', NULL, 2),
+(18, 11132123, 8, 1, '2016-09-27', NULL, 2),
+(19, 11105191, 6, 1, '2016-09-28', '2016-09-28', 3),
+(20, 11105191, 6, 1, '2016-10-02', '2016-10-02', 3),
+(21, 11105191, 6, 1, '2016-10-02', '2016-10-02', 3),
+(22, 11105191, 6, 1, '2016-10-02', '2016-10-02', 3),
+(23, 11105191, 6, 1, '2016-10-02', '2016-10-02', 3),
+(24, 11132123, 6, 1, '2016-10-02', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -105,6 +106,7 @@ INSERT INTO `borrow_log` (`log_id`, `user_id_number`, `item_id`, `borrow_qty`, `
 CREATE TABLE `inventory` (
   `id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
+  `remaining_qty` int(11) NOT NULL,
   `item_name` varchar(50) NOT NULL,
   `brand_model` varchar(30) NOT NULL,
   `date_acquired` date NOT NULL,
@@ -115,10 +117,10 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`id`, `qty`, `item_name`, `brand_model`, `date_acquired`, `remarks`) VALUES
-(6, 25, 'mouse', 'Razer', '2016-09-21', 'Gaming Mouse'),
-(8, 1, 'keyboard', 'Razer', '2016-09-23', 'Gaming Keyboard'),
-(10, 0, 'moose', 'TESTING', '2016-09-23', 'Testing');
+INSERT INTO `inventory` (`id`, `qty`, `remaining_qty`, `item_name`, `brand_model`, `date_acquired`, `remarks`) VALUES
+(6, 27, 26, 'mouse', 'Razer', '2016-09-21', 'Gaming Mouse'),
+(8, 1, 1, 'keyboard', 'Razer', '2016-09-23', 'Gaming Keyboard'),
+(10, 0, 0, 'moose', 'TESTING', '2016-09-23', 'Testing');
 
 --
 -- Indexes for dumped tables
@@ -161,7 +163,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `borrow_log`
 --
 ALTER TABLE `borrow_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `inventory`
 --

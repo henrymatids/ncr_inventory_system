@@ -84,7 +84,7 @@
 
 					borrowCloneTable.attr('id', resultData.id);
 					borrowCloneTable.find('.borrowId').text(resultData.id);
-					borrowCloneTable.find('.borrowQuantity').text(resultData.qty);
+					borrowCloneTable.find('.borrowQuantity').text(resultData.remaining_qty);
 					borrowCloneTable.find('.borrowItemName').text(resultData.item_name);
 					borrowCloneTable.find('.borrowBrandModel').text(resultData.brand_model);
 					borrowCloneTable.removeClass('borrowToBeClonedTable');

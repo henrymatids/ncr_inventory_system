@@ -190,7 +190,6 @@
 		request.done(function(response){
 			$('#userManagementTable').empty();
 			var result = jQuery.parseJSON(response);
-			console.log(result);
 
 			if(!result['error'].length){
 				for(var x = 0; x < result.data.length; x++){

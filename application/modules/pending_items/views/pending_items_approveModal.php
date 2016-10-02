@@ -9,6 +9,7 @@
         <h5><p><strong>You are about to approve this Request.</p></h5>
         <h5><p>Are you sure you want to proceed?</p></h5>
         <input type="hidden" class="form-control" name="approveModalID"/>
+        <input type="hidden" class="form-control" name="approveQuantity"/>
       </div>
       <div class="modal-footer">
         <button type="button" id="approveYes" class="btn btn-danger btn-md"> Yes </button>

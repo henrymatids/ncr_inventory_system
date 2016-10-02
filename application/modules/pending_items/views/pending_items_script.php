@@ -30,7 +30,9 @@
 			    responseID = currentRow.attr('id');
 
 			    $("#"+responseID).each(function() {
+			    	quantity = $(this).find('.pendingQuantity').text();
 			    	$("[name=approveModalID]").attr("id",responseID);
+			    	$("[name=approveQuantity]").attr("id",quantity);
 			    });
 			});
 
@@ -38,7 +40,8 @@
 		    $("#approveYes").on('click', function() {
 				var id = {
 						id : $("[name=approveModalID]").attr("id"),
-						status : 2
+						status : 2,
+						remaining_qty : $("[name=approveQuantity]").attr("id")	
 					};
 				var request = $.post("<?= base_url('api/controller_inventory/changeItemStatus') ?>", id, 'json');
 

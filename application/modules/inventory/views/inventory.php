@@ -21,7 +21,8 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Quantity</th>
+            <th>Total Quantity</th>
+            <th>Available Quantity</th>
             <th>Item Name</th>
             <th>Brand Model</th>
             <th>Date Acquired</th>
@@ -37,6 +38,7 @@
           <tr class="invToBeClonedTable">
               <td class="invId"></td>
               <td class="invQuantity"></td>
+              <td class="invAvailableQuantity"></td>
               <td class="invItemName"></td>
               <td class="invBrandModel"></td>
               <td class="invDateAcquired"></td>

@@ -164,7 +164,7 @@
 		request.done(function(response) {
 			$('#inventoryTable').empty();
 			var result = jQuery.parseJSON(response);
-			console.log(response);
+			
 			if (!result['error'].length) {
 				for (var x = 0; x < result.data.length; x++ ) {
 					var invCloneTable = $(".invCloneTable").find('.invToBeClonedTable').clone();
@@ -173,6 +173,7 @@
 					invCloneTable.attr('id', resultData.id);
 					invCloneTable.find('.invId').text(resultData.id);
 					invCloneTable.find('.invQuantity').text(resultData.qty);
+					invCloneTable.find('.invAvailableQuantity').text(resultData.remaining_qty);
 					invCloneTable.find('.invItemName').text(resultData.item_name);
 					invCloneTable.find('.invBrandModel').text(resultData.brand_model);
 					invCloneTable.find('.invDateAcquired').text(resultData.date_acquired);

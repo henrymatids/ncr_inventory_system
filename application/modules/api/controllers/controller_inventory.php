@@ -88,6 +88,11 @@ class Controller_inventory extends API_Controller {
 
 	public function borrowedItemChangeStatus() {
 
+		$availableQuantity = $this->borrow_log->getUserBorrowedItems(0, 0, 0, $this->input->post('id'));
+		$newQuantity = $availableQuantity[0]['remaining_qty'] + $availableQuantity[0]['borrow_qty'];
+		$this->inventory->update_item(array('remaining_qty' => $newQuantity),
+										$availableQuantity[0]['id']);
+		
 		$data = array('status'=> 3,
 					   'date_returned' => $this->input->post('borrowedItemDate'));
 
@@ -110,16 +115,25 @@ class Controller_inventory extends API_Controller {
 		$this->outputResponse();
 	}
 
+	public function getAllApprovedItems() {
+		$data = $this->borrow_log->retrieveBorrowLog(2, $this->input->post('searchBarValue'));
+
+		$this->responseData($data);
+		$this->outputResponse();
+	}
 	public function changeItemStatus() {
 
+		$availableQuantity = $this->borrow_log->getUserBorrowedItems(0, 0, 0, $this->input->post('id'));
+		$newQuantity = $availableQuantity[0]['remaining_qty'] - $availableQuantity[0]['borrow_qty'];
+		$this->inventory->update_item(array('remaining_qty' => $newQuantity),
+										$availableQuantity[0]['id']);
 		$data = array('status' => $this->input->post('status'));
-
 		$response = $this->borrow_log->changeBorrowedItemStatus($data, $this->input->post('id'));
 
 		if (!$response) {
 			$this->responseError(44, 'Changing status failed');
 		} else {
-			$this->responseData($this->input->post());
+			$this->responseData($availableQuantity);
 		}
 
 		$this->outputResponse();
@@ -150,4 +164,5 @@ class Controller_inventory extends API_Controller {
 
 		$this->outputResponse();
 	}
+	
 }

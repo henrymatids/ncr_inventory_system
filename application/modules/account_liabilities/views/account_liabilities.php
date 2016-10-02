@@ -19,28 +19,28 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Available Quantity</th>
-            <th>Item Name</th>
-            <th>Brand Model</th>
-            <th>Action</th>
+            <th>ID Number</th>
+            <th>Firstname</th>
+            <th>Middlename</th>
+            <th>Lastname</th>
+            <th>Item name</th>
+            <th>Brand model</th>
+            <th>Quantity</th>
           </tr>
         </thead>
-        <tbody id="borrowTable"></tbody>
+        <tbody id="accntTable"></tbody>
       </table>
 
-      <div class="borrowCloneTable tableCloneTable">
+      <div class="accntCloneTable tableCloneTable">
         <table>
-          <tr class="borrowToBeClonedTable">
-              <td class="borrowId"></td>
-              <td class="borrowQuantity"></td>
-              <td class="borrowItemName"></td>
-              <td class="borrowBrandModel"></td>
-              <td>
-                  <button type="submit" class="btn btn-primary btn-xs" id="borrowBtn" data-toggle="modal" data-target="#borrowModal">
-                    Borrow
-                  </button>
-              </td>
+          <tr class="accntToBeClonedTable">
+              <td class="accntID"></td>
+              <td class="accntFirstname"></td>
+              <td class="accntMiddlename"></td>
+              <td class="accntLastname"></td>
+              <td class="accntItemName"></td>
+              <td class="accntBrandModel"></td>
+              <td class="accntQuantity"></td>
           </tr>
         </table>
       </div>

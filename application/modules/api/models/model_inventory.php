@@ -79,4 +79,15 @@ class Model_inventory extends CI_model
 		return $this->db->get($this->table)->result_array();
 	}
 
+	public function retrieveAvailableQuantity($id) {
+		$this->db->start_cache();
+		$this->db->flush_cache();
+
+		$this->db->where('id', $id);
+
+		return $this->db->get($this->table)->result_array();
+	}
+
+	// public function 
+
 }
